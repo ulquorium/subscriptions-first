@@ -5,7 +5,7 @@
 // Формат: { version, url, notes: { uk, en, ru } } — див. version.json у корені репо.
 // Розширення НЕ завантажує й не виконує код звідти — лише читає номер версії,
 // посилання і короткий текст.
-const UPDATE_URL = '';
+const UPDATE_URL = 'https://raw.githubusercontent.com/ulquorium/youtube-subs-first/main/version.json';
 const CHECK_EVERY_MIN = 6 * 60;
 
 const currentVersion = () => chrome.runtime.getManifest().version;

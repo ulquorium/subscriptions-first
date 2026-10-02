@@ -1,0 +1,9 @@
+{
+  "version": "1.10.0",
+  "url": "https://github.com/ulquorium/youtube-subs-first/releases/tag/v1.10.0",
+  "notes": {
+    "en": "• The “Save to…” dialog now opens from the ⋮ menu of any video: search results, recommendations, home and subscriptions.",
+    "uk": "• Вікно «Зберегти в…» тепер відкривається з меню ⋮ біля будь-якого відео: у видачі, рекомендаціях, на головній і в підписках.",
+    "ru": "• Окно «Сохранить в…» теперь открывается из меню ⋮ у любого видео: в выдаче, рекомендациях, на главной и в подписках."
+  }
+}
