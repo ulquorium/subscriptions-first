@@ -1,27 +1,39 @@
-// Фоновий скрипт: "що нового" після оновлення + перевірка нових версій.
+// Update notifier. The extension is distributed through GitHub releases, so
+// Chrome never updates it by itself: we only check a small public JSON file
+// (version.json) and tell the user that a new version exists. Data only — no
+// code is ever loaded from the network.
 //
-// UPDATE_URL — адреса файлу version.json, який ти викладаєш разом із релізом
-// (наприклад, у GitHub-репозиторії). Поки порожньо — перевірка вимкнена.
-// Формат: { version, url, notes: { uk, en, ru } } — див. version.json у корені репо.
-// Розширення НЕ завантажує й не виконує код звідти — лише читає номер версії,
-// посилання і короткий текст.
+// Empty UPDATE_URL = update checks disabled (also used for a Web Store build).
 const UPDATE_URL = 'https://raw.githubusercontent.com/ulquorium/youtube-subs-first/main/version.json';
-const CHECK_EVERY_MIN = 6 * 60;
+// e.g. 'https://raw.githubusercontent.com/<owner>/<repo>/main/version.json'
 
+const ALARM = 'update-check';
+const FIRST_CHECK_MIN = 1;
+const CHECK_EVERY_MIN = 6 * 60;
+const BADGE_UPDATE = { text: '↑', color: '#1e8e3e' };
+const BADGE_NEW = { text: 'NEW', color: '#1a73e8' };
+
+const t = (key, subs) => chrome.i18n.getMessage(key, subs);
+const lang = () => t('langCode') || 'en';
 const currentVersion = () => chrome.runtime.getManifest().version;
 
-function isNewer(a, b) {
-  const pa = String(a).split('.').map(Number);
-  const pb = String(b).split('.').map(Number);
+// Segment by segment, as numbers: 1.10.0 > 1.9.0.
+function compareVersions(a, b) {
+  const pa = String(a).split('.').map((n) => parseInt(n, 10) || 0);
+  const pb = String(b).split('.').map((n) => parseInt(n, 10) || 0);
   for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-    const x = pa[i] || 0;
-    const y = pb[i] || 0;
-    if (x !== y) return x > y;
+    const d = (pa[i] || 0) - (pb[i] || 0);
+    if (d) return d > 0 ? 1 : -1;
   }
-  return false;
+  return 0;
 }
 
-// З version.json приймаємо лише прості дані: номер версії, https-посилання, текст.
+function pickNotes(notes) {
+  if (!notes || typeof notes !== 'object') return '';
+  return notes[lang()] || notes.en || Object.values(notes)[0] || '';
+}
+
+// Only plain data is accepted from version.json.
 function parseRemote(j) {
   if (!j || typeof j.version !== 'string' || !/^\d+(\.\d+){0,3}$/.test(j.version)) return null;
   if (typeof j.url !== 'string' || !/^https:\/\//.test(j.url)) return null;
@@ -32,84 +44,92 @@ function parseRemote(j) {
   return { version: j.version, url: j.url, notes };
 }
 
-async function refreshBadge() {
-  const { remote, seenVersion } = await chrome.storage.local.get(['remote', 'seenVersion']);
-  if (UPDATE_URL && remote && isNewer(remote.version, currentVersion())) {
-    await chrome.action.setBadgeText({ text: '↑' });
-    await chrome.action.setBadgeBackgroundColor({ color: '#2ba640' });
-  } else if (seenVersion !== currentVersion()) {
-    await chrome.action.setBadgeText({ text: 'NEW' });
-    await chrome.action.setBadgeBackgroundColor({ color: '#065fd4' });
-  } else {
-    await chrome.action.setBadgeText({ text: '' });
-  }
+function scheduleChecks() {
+  if (!UPDATE_URL) { chrome.alarms.clear(ALARM); return; }
+  chrome.alarms.create(ALARM, { delayInMinutes: FIRST_CHECK_MIN, periodInMinutes: CHECK_EVERY_MIN });
 }
 
-function pickLang(obj) {
-  if (!obj || typeof obj !== 'object') return obj || '';
-  const ui = chrome.i18n.getMessage('langCode') || 'en';
-  return obj[ui] || obj.en || Object.values(obj)[0] || '';
+async function updateBadge() {
+  const { remote, seenVersion } = await chrome.storage.local.get(['remote', 'seenVersion']);
+  let b = null;
+  if (UPDATE_URL && remote && compareVersions(remote.version, currentVersion()) > 0) b = BADGE_UPDATE;
+  else if (seenVersion && seenVersion !== currentVersion()) b = BADGE_NEW;
+  await chrome.action.setBadgeText({ text: b ? b.text : '' });
+  if (b) await chrome.action.setBadgeBackgroundColor({ color: b.color });
+  if (b && chrome.action.setBadgeTextColor) await chrome.action.setBadgeTextColor({ color: '#ffffff' });
 }
 
 async function checkForUpdate() {
   if (!UPDATE_URL) return;
+  let remote;
   try {
     const r = await fetch(UPDATE_URL + (UPDATE_URL.includes('?') ? '&' : '?') + 't=' + Date.now(), { cache: 'no-store' });
     if (!r.ok) return;
-    const info = parseRemote(await r.json());
-    if (!info) return;
-    await chrome.storage.local.set({ remote: info, checkedAt: Date.now() });
-    if (isNewer(info.version, currentVersion())) {
-      const { notifiedVersion } = await chrome.storage.local.get('notifiedVersion');
-      if (notifiedVersion !== info.version) {
-        chrome.notifications.create('ysf-update', {
-          type: 'basic',
-          iconUrl: 'icons/icon128.png',
-          title: chrome.i18n.getMessage('updateAvailableTitle', [info.version]),
-          message: pickLang(info.notes) || chrome.i18n.getMessage('updateAvailableBody'),
-          priority: 1,
-        });
-        await chrome.storage.local.set({ notifiedVersion: info.version });
-      }
-    }
-  } catch (_) {
-    // мережа недоступна — спробуємо наступного разу
-  } finally {
-    refreshBadge();
+    remote = parseRemote(await r.json());
+  } catch (e) {
+    return; // offline, DNS, bad JSON… try again next time
   }
-}
-
-function scheduleChecks() {
-  chrome.alarms.create('ysf-update-check', { delayInMinutes: 1, periodInMinutes: CHECK_EVERY_MIN });
+  if (!remote) return;
+  await chrome.storage.local.set({ remote, checkedAt: Date.now() });
+  if (compareVersions(remote.version, currentVersion()) > 0) {
+    const { notifiedVersion } = await chrome.storage.local.get('notifiedVersion');
+    if (notifiedVersion !== remote.version) {
+      await chrome.storage.local.set({ notifiedVersion: remote.version });
+      try {
+        await chrome.notifications.create('update-' + remote.version, {
+          type: 'basic',
+          iconUrl: chrome.runtime.getURL('icons/icon128.png'),
+          title: t('notifTitle', [remote.version]),
+          message: pickNotes(remote.notes) || t('notifDefault'),
+          priority: 0,
+        });
+      } catch (e) { /* notifications blocked by the OS — the badge is still there */ }
+    }
+  }
+  await updateBadge();
 }
 
 chrome.runtime.onInstalled.addListener(async ({ reason }) => {
-  if (reason === 'install') await chrome.storage.local.set({ seenVersion: currentVersion() });
+  // After a fresh install there is nothing "new"; after an update the badge
+  // shows NEW until the popup is opened (it stores seenVersion).
+  // (Some reload paths report 'install' with old data still in storage, so
+  // only a really fresh install — no seenVersion yet — counts as "seen".)
+  const { seenVersion } = await chrome.storage.local.get('seenVersion');
+  if (!seenVersion) {
+    await chrome.storage.local.set({ seenVersion: reason === 'update' ? '0' : currentVersion() });
+  }
   scheduleChecks();
-  checkForUpdate();
-  refreshBadge();
+  await updateBadge();
 });
+
 chrome.runtime.onStartup.addListener(() => {
   scheduleChecks();
-  refreshBadge();
+  updateBadge();
 });
+
 chrome.alarms.onAlarm.addListener((a) => {
-  if (a.name === 'ysf-update-check') checkForUpdate();
+  if (a.name === ALARM) checkForUpdate();
 });
+
 chrome.notifications.onClicked.addListener(async (id) => {
-  if (id !== 'ysf-update') return;
-  const { remote } = await chrome.storage.local.get('remote');
-  if (remote?.url) chrome.tabs.create({ url: remote.url });
+  if (!id.startsWith('update-')) return;
   chrome.notifications.clear(id);
+  const { remote } = await chrome.storage.local.get('remote');
+  if (remote && remote.url) chrome.tabs.create({ url: remote.url });
 });
-chrome.runtime.onMessage.addListener((msg, _sender, reply) => {
-  if (msg === 'ysf-check-now') {
-    checkForUpdate().then(() => reply(true));
+
+chrome.runtime.onMessage.addListener((msg, sender, reply) => {
+  if (msg === 'check-now') {
+    checkForUpdate().finally(() => reply({ enabled: !!UPDATE_URL }));
     return true;
   }
-  if (msg === 'ysf-refresh-badge') {
-    refreshBadge().then(() => reply(true));
+  if (msg === 'refresh-badge') {
+    updateBadge().finally(() => reply({ ok: true }));
     return true;
+  }
+  if (msg === 'status') {
+    reply({ enabled: !!UPDATE_URL });
+    return false;
   }
   return false;
 });

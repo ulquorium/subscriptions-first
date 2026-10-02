@@ -1,41 +1,73 @@
 {
+  "langCode": {
+    "message": "uk"
+  },
   "extName": {
     "message": "YouTube: Підписки понад усе"
   },
   "extDescription": {
     "message": "Підписки як головна сторінка, без Shorts, чистий сайдбар, дошка списків і зручне вікно «Зберегти в…»."
   },
-  "updateAvailableTitle": {
-    "message": "Доступна версія $1"
+  "versionLabel": {
+    "message": "Версія $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "updateAvailableBody": {
-    "message": "Натисни, щоб завантажити нову версію."
+  "updateAvailable": {
+    "message": "Доступна версія $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
   "download": {
     "message": "Завантажити"
   },
-  "versionLabel": {
-    "message": "Версія $1"
-  },
   "whatsNew": {
     "message": "Що нового"
   },
-  "showAllChanges": {
+  "fullHistory": {
     "message": "Уся історія змін"
+  },
+  "hideHistory": {
+    "message": "Сховати історію"
+  },
+  "noNotes": {
+    "message": "Для цієї версії немає опису."
+  },
+  "checkedAt": {
+    "message": "Перевірено: $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
+  },
+  "neverChecked": {
+    "message": "Ще не перевірялось"
+  },
+  "checksOff": {
+    "message": "Перевірку оновлень ще не налаштовано"
   },
   "checkNow": {
     "message": "Перевірити"
   },
   "checking": {
-    "message": "Перевіряю…"
+    "message": "Перевірка…"
   },
-  "lastChecked": {
-    "message": "Перевірено: $1"
+  "notifTitle": {
+    "message": "Вийшла YouTube: Підписки понад усе $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "checkDisabledOrPending": {
-    "message": "Перевірку оновлень ще не налаштовано"
-  },
-  "langCode": {
-    "message": "uk"
+  "notifDefault": {
+    "message": "Натисніть, щоб завантажити нову версію."
   }
 }

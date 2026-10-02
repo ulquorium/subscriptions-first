@@ -14,7 +14,7 @@ Chrome-розширення для youtube.com: підписки й власні
 <!-- Скріншот: додати сюди docs/screenshot.png -->
 
 ## Встановлення
-1. Завантаж zip з [останнього релізу](https://github.com/ulquorium/youtube-subs-first/releases/latest) і розпакуй у папку.
+1. Завантаж zip з [останнього релізу](https://github.com/ulquorium/youtube-subs-first/releases/latest) (розділ **Assets**) і розпакуй у постійну папку, наприклад `~/Extensions/youtube-subs-first`.
 2. Відкрий `chrome://extensions` і ввімкни **Режим розробника**.
 3. **Завантажити розпаковане** → вибери цю папку.
 4. Перезавантаж вкладку YouTube.

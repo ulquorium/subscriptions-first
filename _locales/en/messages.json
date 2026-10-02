@@ -1,41 +1,73 @@
 {
+  "langCode": {
+    "message": "en"
+  },
   "extName": {
     "message": "YouTube: Subscriptions First"
   },
   "extDescription": {
     "message": "Subscriptions as the home page, no Shorts, a clean sidebar, a playlist board and a better “Save to” dialog."
   },
-  "updateAvailableTitle": {
-    "message": "Version $1 is available"
+  "versionLabel": {
+    "message": "Version $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "updateAvailableBody": {
-    "message": "Click to download the new version."
+  "updateAvailable": {
+    "message": "Version $VALUE$ is available",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
   "download": {
     "message": "Download"
   },
-  "versionLabel": {
-    "message": "Version $1"
-  },
   "whatsNew": {
     "message": "What's new"
   },
-  "showAllChanges": {
-    "message": "Show all changes"
+  "fullHistory": {
+    "message": "Full changelog"
+  },
+  "hideHistory": {
+    "message": "Hide history"
+  },
+  "noNotes": {
+    "message": "No notes for this version."
+  },
+  "checkedAt": {
+    "message": "Checked: $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
+  },
+  "neverChecked": {
+    "message": "Not checked yet"
+  },
+  "checksOff": {
+    "message": "Update checks are not set up yet"
   },
   "checkNow": {
-    "message": "Check now"
+    "message": "Check"
   },
   "checking": {
     "message": "Checking…"
   },
-  "lastChecked": {
-    "message": "Checked: $1"
+  "notifTitle": {
+    "message": "YouTube: Subscriptions First $VALUE$ is out",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "checkDisabledOrPending": {
-    "message": "Update check is not set up yet"
-  },
-  "langCode": {
-    "message": "en"
+  "notifDefault": {
+    "message": "Click to download the new version."
   }
 }

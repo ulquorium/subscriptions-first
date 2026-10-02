@@ -1,72 +1,93 @@
-const t = (key, subs) => chrome.i18n.getMessage(key, subs) || key;
-const lang = chrome.i18n.getMessage('langCode') || 'en'; // та сама мова, якою показані тексти розширення
-const pick = (o) => (o && typeof o === 'object' ? o[lang] || o.en || Object.values(o)[0] : o || '');
-const current = chrome.runtime.getManifest().version;
-const $ = (id) => document.getElementById(id);
+(() => {
+  const t = (key, subs) => chrome.i18n.getMessage(key, subs);
+  const lang = t('langCode') || 'en';
+  const version = chrome.runtime.getManifest().version;
+  const $ = (id) => document.getElementById(id);
+  let changelog = [];
 
-function isNewer(a, b) {
-  const pa = String(a).split('.').map(Number);
-  const pb = String(b).split('.').map(Number);
-  for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
-    if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) > (pb[i] || 0);
-  }
-  return false;
-}
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach((e) => { e.textContent = t(e.dataset.i18n); });
+  $('version').textContent = t('versionLabel', [version]);
 
-function renderChanges(log, all) {
-  const box = $('changes');
-  box.replaceChildren();
-  const entries = all ? log : log.filter((e) => e.version === current).concat(log.find((e) => e.version === current) ? [] : log.slice(0, 1));
-  for (const e of entries) {
-    const head = document.createElement('div');
-    head.className = 'ver';
-    head.textContent = e.version;
-    const ul = document.createElement('ul');
-    for (const line of e[lang] || e.en || []) {
-      const li = document.createElement('li');
-      li.textContent = line;
-      ul.appendChild(li);
+  function compareVersions(a, b) {
+    const pa = String(a).split('.').map((n) => parseInt(n, 10) || 0);
+    const pb = String(b).split('.').map((n) => parseInt(n, 10) || 0);
+    for (let i = 0; i < Math.max(pa.length, pb.length); i++) {
+      const d = (pa[i] || 0) - (pb[i] || 0);
+      if (d) return d > 0 ? 1 : -1;
     }
-    box.append(head, ul);
+    return 0;
   }
-  $('show-all').hidden = all || log.length <= entries.length;
-}
 
-async function renderUpdate() {
-  const { remote, checkedAt } = await chrome.storage.local.get(['remote', 'checkedAt']);
-  if (remote && isNewer(remote.version, current)) {
-    $('update').hidden = false;
-    $('update-title').textContent = t('updateAvailableTitle', [remote.version]);
-    $('update-notes').textContent = pick(remote.notes) || '';
-    $('update-link').textContent = t('download');
-    $('update-link').href = remote.url || '#';
-  } else {
-    $('update').hidden = true;
+  const fmtDate = (ts) => new Date(ts).toLocaleString(lang, { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const itemsOf = (entry) => (entry && (entry[lang] || entry.en)) || [];
+
+  function list(items) {
+    const ul = document.createElement('ul');
+    for (const s of items) {
+      const li = document.createElement('li');
+      li.textContent = s;
+      ul.append(li);
+    }
+    return ul;
   }
-  $('check-status').textContent = checkedAt
-    ? t('lastChecked', [new Date(checkedAt).toLocaleString(chrome.i18n.getUILanguage())])
-    : t('checkDisabledOrPending');
-}
 
-(async () => {
-  $('name').textContent = t('extName');
-  $('version').textContent = t('versionLabel', [current]);
-  $('whats-new-title').textContent = t('whatsNew');
-  $('show-all').textContent = t('showAllChanges');
-  $('check-now').textContent = t('checkNow');
+  // "What's new": the entry of the installed version; full history on demand.
+  function renderChangelog() {
+    const cur = changelog.find((e) => e.version === version) || changelog[0];
+    const items = itemsOf(cur);
+    $('current-notes').replaceChildren(items.length ? list(items) : Object.assign(document.createElement('div'), { className: 'muted', textContent: t('noNotes') }));
+    const hist = $('history');
+    hist.replaceChildren();
+    for (const e of changelog) {
+      if (e === cur) continue;
+      hist.append(Object.assign(document.createElement('div'), { className: 'ver', textContent: e.version }), list(itemsOf(e)));
+    }
+    $('history-toggle').hidden = changelog.length < 2;
+  }
 
-  const log = await (await fetch(chrome.runtime.getURL('changelog.json'))).json();
-  renderChanges(log, false);
-  $('show-all').addEventListener('click', () => renderChanges(log, true));
-
-  await renderUpdate();
-  $('check-now').addEventListener('click', async () => {
-    $('check-status').textContent = t('checking');
-    await chrome.runtime.sendMessage('ysf-check-now');
-    renderUpdate();
+  $('history-toggle').addEventListener('click', () => {
+    const h = $('history');
+    h.hidden = !h.hidden;
+    $('history-toggle').textContent = t(h.hidden ? 'fullHistory' : 'hideHistory');
   });
 
-  // Відкрили вікно — "NEW" на іконці більше не потрібен
-  await chrome.storage.local.set({ seenVersion: current });
-  chrome.runtime.sendMessage('ysf-refresh-badge');
+  async function renderStatus(enabled) {
+    const { remote, checkedAt } = await chrome.storage.local.get(['remote', 'checkedAt']);
+    const newer = enabled && remote && compareVersions(remote.version, version) > 0;
+    $('update').hidden = !newer;
+    if (newer) {
+      $('update-title').textContent = t('updateAvailable', [remote.version]);
+      const n = remote.notes || {};
+      $('update-notes').textContent = n[lang] || n.en || '';
+      $('update-link').href = remote.url;
+    }
+    $('check').hidden = !enabled;
+    $('checked').textContent = !enabled ? t('checksOff')
+      : checkedAt ? t('checkedAt', [fmtDate(checkedAt)]) : t('neverChecked');
+  }
+
+  $('check').addEventListener('click', async () => {
+    const b = $('check');
+    b.disabled = true;
+    b.textContent = t('checking');
+    const res = await chrome.runtime.sendMessage('check-now').catch(() => null);
+    await renderStatus(!!(res && res.enabled));
+    b.disabled = false;
+    b.textContent = t('checkNow');
+  });
+
+  (async () => {
+    // Opening the popup = the user has seen this version → clears the NEW badge.
+    await chrome.storage.local.set({ seenVersion: version });
+    chrome.runtime.sendMessage('refresh-badge').catch(() => {});
+    const status = await chrome.runtime.sendMessage('status').catch(() => null);
+    await renderStatus(!!(status && status.enabled));
+    try {
+      changelog = await (await fetch(chrome.runtime.getURL('changelog.json'))).json();
+    } catch (e) {
+      changelog = [];
+    }
+    renderChangelog();
+  })();
 })();

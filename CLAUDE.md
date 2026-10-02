@@ -44,7 +44,7 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 | `early.js` | `document_start`: редірект `/` → підписки; обгортка `fetch`/XHR для сигналу `ysf-playlists-changed`. |
 | `content.js` | Уся логіка UI (один IIFE). Секції позначені коментарями `// ---------- … ----------`. |
 | `styles.css` | Усі стилі. Префікс класів/атрибутів — `ysf-`. |
-| `background.js` | Service worker: перевірка оновлень, бейдж, сповіщення. `UPDATE_URL` вгорі файлу. |
+| `background.js` | Service worker: перевірка оновлень, бейдж, сповіщення. `UPDATE_URL` вгорі файлу. Спільний з Instagram (див. нижче). |
 | `popup.html/.js/.css` | Вікно розширення: версія, «Що нового», статус оновлень. |
 | `changelog.json` | Історія змін, тексти `uk`/`en`/`ru`. Нова версія — новий запис **першим**. |
 | `version.json` | Корінь репо, **не** в zip: `{ version, url, notes:{uk,en,ru} }` — те, що читають розширення користувачів. Пише лише `scripts/release.mjs`. |
@@ -65,6 +65,14 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 7. Вікно «Зберегти в…» (`openSavePanel`), тост із «Відмінити» (`showToast(text, {undo})`).
 8. Дошка (`applyBoard`, `loadColumn`, `moveVideo`, `reorderVideo`, `addAt`, `placeOnServer`).
 9. `apply()` — ідемпотентна, викликається через `MutationObserver` + `requestAnimationFrame` і на `yt-navigate-finish`.
+
+## Спільне з розширенням Instagram
+`background.js`, `popup.html`, `popup.js`, `scripts/release.mjs` і
+`.github/workflows/release.yml` **однакові** тут і в `ulquorium/instagram-follow-lists`
+(сусідня папка `../instagram-follow-lists`). Відрізняються лише `UPDATE_URL` (background.js),
+`ZIP_NAME` (release.mjs) і кольори в `popup.css`; ключі `_locales` однакові. Міняти — в обох.
+Деталі роботи сповіщень (alarm, storage, бейджі, повідомлення `check-now` / `refresh-badge` / `status`) —
+розділ «Update notifier» у CLAUDE.md Instagram.
 
 ## Правила, які не можна порушувати
 

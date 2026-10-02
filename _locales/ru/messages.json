@@ -1,41 +1,73 @@
 {
+  "langCode": {
+    "message": "ru"
+  },
   "extName": {
     "message": "YouTube: Подписки прежде всего"
   },
   "extDescription": {
     "message": "Подписки как главная страница, без Shorts, чистый сайдбар, доска списков и удобное окно «Сохранить в…»."
   },
-  "updateAvailableTitle": {
-    "message": "Доступна версия $1"
+  "versionLabel": {
+    "message": "Версия $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "updateAvailableBody": {
-    "message": "Нажми, чтобы скачать новую версию."
+  "updateAvailable": {
+    "message": "Доступна версия $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
   "download": {
     "message": "Скачать"
   },
-  "versionLabel": {
-    "message": "Версия $1"
-  },
   "whatsNew": {
     "message": "Что нового"
   },
-  "showAllChanges": {
+  "fullHistory": {
     "message": "Вся история изменений"
+  },
+  "hideHistory": {
+    "message": "Скрыть историю"
+  },
+  "noNotes": {
+    "message": "Для этой версии нет описания."
+  },
+  "checkedAt": {
+    "message": "Проверено: $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
+  },
+  "neverChecked": {
+    "message": "Ещё не проверялось"
+  },
+  "checksOff": {
+    "message": "Проверка обновлений ещё не настроена"
   },
   "checkNow": {
     "message": "Проверить"
   },
   "checking": {
-    "message": "Проверяю…"
+    "message": "Проверка…"
   },
-  "lastChecked": {
-    "message": "Проверено: $1"
+  "notifTitle": {
+    "message": "Вышла YouTube: Подписки прежде всего $VALUE$",
+    "placeholders": {
+      "value": {
+        "content": "$1"
+      }
+    }
   },
-  "checkDisabledOrPending": {
-    "message": "Проверка обновлений ещё не настроена"
-  },
-  "langCode": {
-    "message": "ru"
+  "notifDefault": {
+    "message": "Нажмите, чтобы скачать новую версию."
   }
 }
