@@ -77,12 +77,24 @@
   }
 
   // ---------- Налаштування (порядок, приховані) ----------
-  let prefs = { subs: { order: [], hidden: [], expanded: false }, playlists: { order: [], hidden: [], expanded: false } };
-  try {
-    const p = JSON.parse(localStorage.getItem(PREFS_KEY) || 'null');
-    if (p) prefs = { ...prefs, ...p, subs: { ...prefs.subs, ...p.subs }, playlists: { ...prefs.playlists, ...p.playlists } };
-  } catch (_) {}
-  const savePrefs = () => { try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch (_) {} };
+  const defaultPrefs = () => ({ subs: { order: [], hidden: [], expanded: false }, playlists: { order: [], hidden: [], expanded: false } });
+  let prefs = defaultPrefs();
+  function loadPrefs() {
+    prefs = defaultPrefs();
+    try {
+      const p = JSON.parse(localStorage.getItem(PREFS_KEY) || 'null');
+      if (p) prefs = { ...prefs, ...p, subs: { ...prefs.subs, ...p.subs }, playlists: { ...prefs.playlists, ...p.playlists } };
+    } catch (_) {}
+  }
+  loadPrefs();
+  // sync-bridge.js (ISOLATED world) дзеркалить prefs у chrome.storage.sync — між комп'ютерами.
+  const savePrefs = () => {
+    try { localStorage.setItem(PREFS_KEY, JSON.stringify(prefs)); } catch (_) {}
+    window.postMessage({ ysf: 'prefs-saved' }, location.origin);
+  };
+  on(window, 'message', (e) => {
+    if (e.source === window && e.data && e.data.ysf === 'prefs-updated') { loadPrefs(); schedule(); }
+  });
   const editing = { subs: false, playlists: false };
 
   // Нові елементи (яких ще немає в збереженому порядку) — зверху, решта — як вибрав користувач

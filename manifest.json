@@ -1,8 +1,9 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "1.10.1",
+  "version": "1.11.0",
   "description": "__MSG_extDescription__",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsiTc57TwpGtskaGFoKQSfNxyjiPgQyM+jl4EdUWRDfWhSBktOxJUT7Btfo+2xTOdmOTd/Rsc6UqTgCSOfB4MdituAa3BROEQgRT9ylm2ajTgTF+O7FiRLljPFBM1UazPOs70kgzY7tVSfmbL9N9hJMvb8dOMgWc3KOHM9sooXnmL6B0LiBZ0nf4saFzb1CFWTcReb2FPYvLOpTlN+BFGqv4/5xuookOFsHgwQLTbTuxnk0t6bom+o/XKW8OQsMYB4NTRZ7zFRdTwA1xadzkLgPsYQD2J0VYXclL6BUp7En4PcjkaNzNJb8/sz/B6sWhYoJpJEQ2Kph6zRQQhyoh6OwIDAQAB",
   "default_locale": "en",
   "icons": {
     "16": "icons/icon16.png",
@@ -27,6 +28,16 @@
     "storage"
   ],
   "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*"
+      ],
+      "js": [
+        "sync-store.js",
+        "sync-bridge.js"
+      ],
+      "run_at": "document_start"
+    },
     {
       "matches": [
         "https://www.youtube.com/*"

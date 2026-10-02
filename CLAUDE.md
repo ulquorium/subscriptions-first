@@ -40,7 +40,9 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 
 | Файл | Що робить |
 |---|---|
-| `manifest.json` | MV3. Обидва контент-скрипти в `"world": "MAIN"`. Дозволи: `alarms`, `notifications`, `storage`. Host permissions немає. |
+| `manifest.json` | MV3. `early.js` і `content.js` у `"world": "MAIN"`, `sync-*.js` — в ISOLATED. Фіксований `key` → ID `ifhbajilfdekgblokbfoccfodmenacmb` у будь-якій папці (потрібно для sync; `--store` збірка його прибирає). Дозволи: `alarms`, `notifications`, `storage`. Host permissions немає. |
+| `sync-store.js` | ISOLATED world, `document_start`: `syncStore.read/write/onChange` — JSON у `chrome.storage.sync` шматками ≤8 КБ. Спільний з Instagram. |
+| `sync-bridge.js` | ISOLATED world, `document_start`: дзеркалить `localStorage['ysf-prefs-v1']` ↔ `chrome.storage.sync` (`prefs`). З `content.js` — `postMessage` `{ysf:'prefs-saved'}` / `{ysf:'prefs-updated'}`. |
 | `early.js` | `document_start`: редірект `/` → підписки; обгортка `fetch`/XHR для сигналу `ysf-playlists-changed`. |
 | `content.js` | Уся логіка UI (один IIFE). Секції позначені коментарями `// ---------- … ----------`. |
 | `styles.css` | Усі стилі. Префікс класів/атрибутів — `ysf-`. |
@@ -58,6 +60,8 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 2. Константи, словники `UK`/`EN`/`ru` (`L`), `fmtNum`, `quote`.
 3. `prefs` у `localStorage['ysf-prefs-v1']`: `{ subs:{order,hidden,expanded}, playlists:{order,hidden,expanded}, boardOff }`.
    Кеш плейлистів — `localStorage['ysf-playlists-v2']`.
+   `savePrefs()` також шле `postMessage({ysf:'prefs-saved'})` → `sync-bridge.js` пише в `chrome.storage.sync`;
+   на `{ysf:'prefs-updated'}` (зміни з іншого комп'ютера) — `loadPrefs()` + `schedule()`. При відкритті сторінки синхронізована копія перемагає.
 4. SPA-навігація: `navigateEndpoint()` шле `yt-navigate` на `ytd-app` з innertube endpoint.
 5. Секції сайдбару (`buildSection` / `renderSection` / `setupDnD`) — спільний код для підписок і списків.
 6. `innertube(path, body)` — запити до `/youtubei/v1/*` з `SAPISIDHASH` (cookie `SAPISID`) і контекстом з `ytcfg`.
@@ -67,7 +71,7 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 9. `apply()` — ідемпотентна, викликається через `MutationObserver` + `requestAnimationFrame` і на `yt-navigate-finish`.
 
 ## Спільне з розширенням Instagram
-`background.js`, `popup.html`, `popup.js`, `scripts/release.mjs` і
+`background.js`, `popup.html`, `popup.js`, `sync-store.js`, `scripts/release.mjs` і
 `.github/workflows/release.yml` **однакові** тут і в `ulquorium/instagram-follow-lists`
 (сусідня папка `../instagram-follow-lists`). Відрізняються лише `UPDATE_URL` (background.js),
 `ZIP_NAME` (release.mjs) і кольори в `popup.css`; ключі `_locales` однакові. Міняти — в обох.
@@ -106,6 +110,6 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 
 - YouTube часто міняє DOM/внутрішні API — найкрихкіші місця: `isSaveMenuItem`, пошук кнопки «Зберегти»
   (`button-view-model` з `iconName: PLAYLIST_ADD`), парсинг `lockupViewModel` і `playlistVideoRenderer`.
-- Порядок і приховування в сайдбарі зберігаються в `localStorage` youtube.com — не синхронізуються між пристроями.
+- Порядок і приховування в сайдбарі — у `localStorage` youtube.com, дзеркало в `chrome.storage.sync` (між комп'ютерами — якщо в Chrome увімкнено синхронізацію розширень).
 - Плейлисти, створені в YouTube Music, не відрізнити від звичайних (фільтруються лише альбоми й мікси за ID-префіксами).
 - Без Chrome Web Store розширення не оновлюється автоматично — лише сповіщає.
