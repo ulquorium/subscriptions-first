@@ -34,7 +34,7 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 - **Оновлення:** `background.js` раз на 6 год читає `version.json` за `UPDATE_URL`
   (raw.githubusercontent.com репозиторію; порожній → вимкнено), бейдж ↑ + системне сповіщення;
   бейдж NEW після оновлення; popup з історією змін (`changelog.json`).
-  Реліз — лише через `node scripts/release.mjs X.Y.Z` + `git push --follow-tags` (див. `README.md`).
+  Реліз — лише через `node scripts/release.mjs X.Y.Z` + `git push --follow-tags` (див. `README.uk.md`).
 
 ## Файли
 
@@ -48,7 +48,7 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 | `popup.html/.js/.css` | Вікно розширення: версія, «Що нового», статус оновлень. |
 | `changelog.json` | Історія змін, тексти `uk`/`en`/`ru`. Нова версія — новий запис **першим**. |
 | `version.json` | Корінь репо, **не** в zip: `{ version, url, notes:{uk,en,ru} }` — те, що читають розширення користувачів. Пише лише `scripts/release.mjs`. |
-| `scripts/release.mjs` | Node 18+, без залежностей: `--setup owner/repo`, `<X.Y.Z>` (версія, перевірки, zip, коміт, тег), `--build [--store]`, `--notes`. Процес — у `README.md`. |
+| `scripts/release.mjs` | Node 18+, без залежностей: `--setup owner/repo`, `<X.Y.Z>` (версія, перевірки, zip, коміт, тег), `--build [--store]`, `--notes`. Процес — у `README.uk.md`. |
 | `.github/workflows/release.yml` | На тег `v*`: збирає zip і створює GitHub-реліз із текстом із `changelog.json`. |
 | `_locales/{en,uk,ru}/messages.json` | Тексти popup/назви/сповіщень. Ключ `langCode` — мова локалі. |
 | `icons/` | 16/32/48/128 PNG. |

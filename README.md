@@ -1,71 +1,83 @@
 # YouTube: Subscriptions First
 
-Chrome-розширення для youtube.com: підписки й власні списки замість алгоритмічної стрічки.
-Інтерфейс українською, англійською й російською (за мовою YouTube; вікно розширення — за мовою Chrome).
+A Chrome extension that turns youtube.com into a subscriptions-first site: your
+channels and your own playlists instead of the algorithmic feed, no Shorts, and much
+better tools for organizing videos into lists.
 
-*English below.*
+*Українською: [README.uk.md](README.uk.md).*
 
-- **Головна = підписки.** Логотип і `youtube.com/` ведуть на підписки; алгоритмічна стрічка лишається як «Алгоритмічна».
-- **Без Shorts** — ні в сайдбарі, ні на головній, ні в підписках.
-- **Чистий сайдбар:** свої секції «Підписки» і «Списки» з порядком перетягуванням і приховуванням; зайві пункти прибрані.
-- **Вікно «Зберегти в…»:** високе, з пошуком, кілька списків поспіль, створення нового списку.
-- **Дошка списків** на `/feed/playlists`: колонка = список, перетягування відео між списками й усередині.
+## Why
 
-<!-- Скріншот: додати сюди docs/screenshot.png -->
+YouTube's home page is built to keep you watching whatever the algorithm picks. If you
+mostly watch channels you subscribed to and keep your own playlists, the useful parts are
+buried: Subscriptions is one click away, Shorts are everywhere, the sidebar is cluttered,
+and the "Save to…" dialog is tiny and shows a few lists at a time. This extension
+rearranges the site around what you chose to follow — without any account, server or
+tracking.
 
-## Встановлення
-1. Завантаж zip з [останнього релізу](https://github.com/ulquorium/youtube-subs-first/releases/latest) (розділ **Assets**) і розпакуй у постійну папку, наприклад `~/Extensions/youtube-subs-first`.
-2. Відкрий `chrome://extensions` і ввімкни **Режим розробника**.
-3. **Завантажити розпаковане** → вибери цю папку.
-4. Перезавантаж вкладку YouTube.
+## Features
 
-## Оновлення
-Розширення раз на 6 годин перевіряє, чи вийшла нова версія. Якщо так — на іконці **↑** і системне сповіщення; клік відкриває сторінку релізу.
-Розпакуй новий zip **поверх тієї ж папки** і натисни ↻ на картці розширення в `chrome://extensions`. Папку не міняй: з іншої папки Chrome вважає це новим розширенням.
-Після оновлення на іконці **NEW**, доки не відкриєш вікно розширення («Що нового», уся історія змін, кнопка «Перевірити»).
+- **Home = Subscriptions.** The logo and `youtube.com/` open your subscriptions feed.
+  The original home stays available as "Algorithmic".
+- **No Shorts** — removed from the sidebar, the home page and the subscriptions feed.
+- **Clean sidebar** with your own **Subscriptions** and **Lists** sections: drag to reorder,
+  hide with the eye icon, video counts, emoji at the start of a playlist name becomes its icon.
+  Clutter ("More from YouTube", "Report history", the footer, etc.) is removed.
+- **A better "Save to…" dialog:** tall, searchable, add to several lists in a row without it
+  closing, create a new list. Opens from the ⋮ menu of any video and from the Save button.
+- **Playlist board** on `/feed/playlists`: every list is a column; drag videos between lists
+  (Alt = copy) or within a list to reorder; remove with ×, with a 5-second Undo.
+- **Languages:** English, Ukrainian, Russian — follows YouTube's language (the extension popup follows Chrome's).
 
-## Приватність
-Розширення нічого не збирає й нікуди не передає. Запити йдуть лише на YouTube (від твого імені — для керування твоїми плейлистами) і на GitHub за файлом `version.json`. Налаштування зберігаються локально в браузері.
+## Install
 
-## Випуск нової версії (для автора)
-Потрібні Node 18+ і git.
+The extension is not in the Chrome Web Store; it is installed from a GitHub release.
 
-1. Додай нову версію **першим** записом у `changelog.json`, трьома мовами:
-   ```json
-   { "version": "1.11.0", "uk": ["…"], "en": ["…"], "ru": ["…"] }
-   ```
-2. `node scripts/release.mjs 1.11.0` — оновлює `version` у `manifest.json`, пише `version.json` (notes із changelog, посилання на реліз `v1.11.0`), перевіряє синтаксис `.js`/`.json` і паритет локалізацій, збирає `dist/youtube-subs-first-1.11.0.zip` лише з файлів розширення, комітить і ставить тег `v1.11.0`. (`--no-git` — без коміту й тегу.)
-3. `git push --follow-tags` — GitHub Action (`.github/workflows/release.yml`) збирає zip із тегу й створює реліз із текстом із changelog (~1 хв).
-4. Протягом ~6 годин усі користувачі отримують сповіщення.
+1. Open the [latest release](https://github.com/ulquorium/youtube-subs-first/releases/latest) and download
+   `youtube-subs-first-X.Y.Z.zip` under **Assets**.
+2. Unzip it into a folder you will keep, e.g. `~/Extensions/youtube-subs-first`.
+3. Open `chrome://extensions` and turn on **Developer mode** (top right).
+4. Click **Load unpacked** and select that folder.
+5. Reload youtube.com.
 
-**Важливо:** `version.json` з новою версією не повинен потрапити в `main` раніше за реліз — тільки через скрипт і `git push --follow-tags`, щоб коміт і тег прийшли разом. Якщо Action упав — виправ і перезапусти його, або відкоти `version.json`.
+Works in Chrome and other Chromium browsers (Edge, Brave, Arc, Opera).
 
-Інші команди: `--build` (лише zip), `--build --store` (zip для Chrome Web Store з вимкненою перевіркою оновлень — магазин оновлює сам), `--notes 1.11.0` (текст релізу), `--setup owner/repo` (одноразово: прописати `UPDATE_URL`).
+## Updates
 
-### Перевірка сповіщень локально
-1. Підніми локальний сервер із `version.json` з вищою версією і заголовком `Access-Control-Allow-Origin: *` (порт 8765).
-2. Тимчасово `UPDATE_URL = 'http://localhost:8765/version.json'` у `background.js`, онови розширення, натисни «Перевірити» в popup → ↑, сповіщення, блок у popup.
-3. Поверни `UPDATE_URL`.
-4. NEW: відкрий popup, підвищ `version` у `manifest.json`, онови розширення → **NEW**; відкрий popup → зникає.
+Every 6 hours the extension checks whether a new version is out. If so, you get a **↑**
+badge on its icon and a system notification; clicking it opens the release page.
 
----
+To update: download the new zip, unzip it **over the same folder** (replace the files),
+then click ↻ on the extension card in `chrome://extensions`. Always use the same folder —
+Chrome treats a different folder as a different extension.
 
-## English
+After an update the icon shows **NEW** until you open the popup, which shows the version,
+what's new, the full changelog and a **Check now** button.
 
-Chrome extension for youtube.com: your subscriptions and your own playlists instead of the algorithmic feed.
+## Privacy
 
-- Home = Subscriptions (the algorithmic feed stays available as "Algorithmic").
-- No Shorts anywhere.
-- Clean sidebar with your own "Subscriptions" and "Lists" sections (drag to reorder, hide).
-- A better "Save to…" dialog: tall, searchable, several lists in a row, create a new list.
-- Playlist board on `/feed/playlists`: drag videos between and within lists.
+- No data is collected or sent anywhere. No analytics, no accounts, no servers of our own.
+- Requests go only to youtube.com (on your behalf, to read and change *your* playlists when
+  you ask) and to GitHub to read a small `version.json` file with the latest version number.
+- Sidebar order and hidden items are stored locally in your browser.
+- No remote code: the extension only runs the files you installed.
 
-**Install:** download the zip from the [latest release](https://github.com/ulquorium/youtube-subs-first/releases/latest), unzip, `chrome://extensions` → Developer mode → **Load unpacked** → the folder.
+## Permissions
 
-**Update:** you get a **↑** badge and a notification when a new version is out. Unzip it over the same folder and click ↻ on the extension card.
+| Permission | Why |
+|---|---|
+| Access to `www.youtube.com` | The extension works on YouTube pages. |
+| `storage` | Remembers the update-check state. |
+| `alarms` | Schedules the update check every 6 hours. |
+| `notifications` | Tells you a new version is out. |
 
-**Privacy:** no data is collected or sent anywhere. Requests go only to YouTube (on your behalf, to manage your playlists) and to GitHub for `version.json`. Settings stay in your browser.
+## For developers
 
-**Releasing:** add the changelog entry first, then `node scripts/release.mjs X.Y.Z` and `git push --follow-tags` (details above).
+Plain JavaScript and CSS, Manifest V3, no build step. Architecture and rules: [`CLAUDE.md`](CLAUDE.md),
+roadmap: [`docs/TASKS.md`](docs/TASKS.md).
+Release process (changelog → `node scripts/release.mjs X.Y.Z` → `git push --follow-tags`):
+[README.uk.md](README.uk.md#випуск-нової-версії-для-автора).
 
-License: MIT.
+## License
+
+[MIT](LICENSE)
