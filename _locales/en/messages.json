@@ -69,5 +69,8 @@
   },
   "notifDefault": {
     "message": "Click to download the new version."
+  },
+  "about": {
+    "message": "About"
   }
 }

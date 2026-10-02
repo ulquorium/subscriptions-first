@@ -72,8 +72,8 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 
 ## Спільне з розширенням Instagram
 `background.js`, `popup.html`, `popup.js`, `sync-store.js`, `scripts/release.mjs` і
-`.github/workflows/release.yml` **однакові** тут і в `ulquorium/instagram-follow-lists`
-(сусідня папка `../instagram-follow-lists`). Відрізняються лише `UPDATE_URL` (background.js),
+`.github/workflows/release.yml` **однакові** тут і в `ulquorium/following-first`
+(сусідня папка `../following-first`). Відрізняються лише `UPDATE_URL` (background.js),
 `ZIP_NAME` (release.mjs) і кольори в `popup.css`; ключі `_locales` однакові. Міняти — в обох.
 Деталі роботи сповіщень (alarm, storage, бейджі, повідомлення `check-now` / `refresh-badge` / `status`) —
 розділ «Update notifier» у CLAUDE.md Instagram.

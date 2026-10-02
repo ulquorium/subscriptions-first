@@ -1,9 +1,9 @@
 {
-  "version": "1.11.0",
-  "url": "https://github.com/ulquorium/youtube-subs-first/releases/tag/v1.11.0",
+  "version": "1.12.0",
+  "url": "https://github.com/ulquorium/youtube-subs-first/releases/tag/v1.12.0",
   "notes": {
-    "en": "• Sidebar order and hidden items sync between your computers through your Chrome account (when Chrome sync for extensions is on).",
-    "uk": "• Порядок і приховані пункти сайдбару синхронізуються між комп'ютерами через акаунт Chrome (якщо в Chrome увімкнена синхронізація розширень).",
-    "ru": "• Порядок и скрытые пункты сайдбара синхронизируются между компьютерами через аккаунт Chrome (если в Chrome включена синхронизация расширений)."
+    "en": "• The extension popup now has an “About” link to the description and help on GitHub.",
+    "uk": "• У вікні розширення з'явилося посилання «Про розширення» — опис і довідка на GitHub.",
+    "ru": "• В окне расширения появилась ссылка «О расширении» — описание и справка на GitHub."
   }
 }
