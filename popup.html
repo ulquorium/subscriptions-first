@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="" width="32" height="32">
+    <div>
+      <h1 id="name"></h1>
+      <div id="version" class="muted"></div>
+    </div>
+  </header>
+
+  <section id="update" hidden>
+    <div id="update-title"></div>
+    <div id="update-notes" class="muted"></div>
+    <a id="update-link" class="btn primary" target="_blank" rel="noopener"></a>
+  </section>
+
+  <section>
+    <h2 id="whats-new-title"></h2>
+    <div id="changes"></div>
+    <button id="show-all" class="link" type="button"></button>
+  </section>
+
+  <footer class="muted">
+    <span id="check-status"></span>
+    <button id="check-now" class="link" type="button"></button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>

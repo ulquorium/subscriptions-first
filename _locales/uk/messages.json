@@ -1,0 +1,41 @@
+{
+  "extName": {
+    "message": "YouTube: Підписки понад усе"
+  },
+  "extDescription": {
+    "message": "Підписки як головна сторінка, без Shorts, чистий сайдбар, дошка списків і зручне вікно «Зберегти в…»."
+  },
+  "updateAvailableTitle": {
+    "message": "Доступна версія $1"
+  },
+  "updateAvailableBody": {
+    "message": "Натисни, щоб завантажити нову версію."
+  },
+  "download": {
+    "message": "Завантажити"
+  },
+  "versionLabel": {
+    "message": "Версія $1"
+  },
+  "whatsNew": {
+    "message": "Що нового"
+  },
+  "showAllChanges": {
+    "message": "Уся історія змін"
+  },
+  "checkNow": {
+    "message": "Перевірити"
+  },
+  "checking": {
+    "message": "Перевіряю…"
+  },
+  "lastChecked": {
+    "message": "Перевірено: $1"
+  },
+  "checkDisabledOrPending": {
+    "message": "Перевірку оновлень ще не налаштовано"
+  },
+  "langCode": {
+    "message": "uk"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "extName": {
+    "message": "YouTube: Подписки прежде всего"
+  },
+  "extDescription": {
+    "message": "Подписки как главная страница, без Shorts, чистый сайдбар, доска списков и удобное окно «Сохранить в…»."
+  },
+  "updateAvailableTitle": {
+    "message": "Доступна версия $1"
+  },
+  "updateAvailableBody": {
+    "message": "Нажми, чтобы скачать новую версию."
+  },
+  "download": {
+    "message": "Скачать"
+  },
+  "versionLabel": {
+    "message": "Версия $1"
+  },
+  "whatsNew": {
+    "message": "Что нового"
+  },
+  "showAllChanges": {
+    "message": "Вся история изменений"
+  },
+  "checkNow": {
+    "message": "Проверить"
+  },
+  "checking": {
+    "message": "Проверяю…"
+  },
+  "lastChecked": {
+    "message": "Проверено: $1"
+  },
+  "checkDisabledOrPending": {
+    "message": "Проверка обновлений ещё не настроена"
+  },
+  "langCode": {
+    "message": "ru"
+  }
+}

@@ -1,0 +1,79 @@
+:root {
+  --bg: #fff;
+  --fg: #0f0f0f;
+  --muted: #606060;
+  --line: rgba(0, 0, 0, 0.1);
+  --accent: #065fd4;
+  --ok: #2ba640;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #212121;
+    --fg: #f1f1f1;
+    --muted: #aaa;
+    --line: rgba(255, 255, 255, 0.12);
+    --accent: #3ea6ff;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  width: 340px;
+  margin: 0;
+  padding: 16px;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 "Roboto", "Segoe UI", system-ui, sans-serif;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+h1 { margin: 0; font-size: 15px; font-weight: 600; }
+h2 { margin: 0 0 8px; font-size: 13px; font-weight: 600; }
+.muted { color: var(--muted); }
+section {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+#update {
+  padding: 12px;
+  margin-bottom: 4px;
+  border: 1px solid var(--ok);
+  border-radius: 10px;
+}
+#update-title { font-weight: 600; margin-bottom: 4px; }
+#update-notes { margin-bottom: 10px; white-space: pre-line; }
+.ver { margin-top: 10px; font-weight: 600; }
+.ver:first-child { margin-top: 0; }
+ul { margin: 4px 0 0; padding-left: 18px; }
+li { margin: 2px 0; }
+.btn {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.primary { background: var(--fg); color: var(--bg); }
+.link {
+  padding: 0;
+  margin-top: 8px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  cursor: pointer;
+}
+footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-size: 12px;
+}
+footer .link { margin: 0; }
