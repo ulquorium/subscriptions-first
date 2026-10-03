@@ -3,7 +3,7 @@
 Мета: перетворити папку розширення на нормальний репозиторій з релізами, увімкнути перевірку
 оновлень і підготувати публікацію в Chrome Web Store. Контекст коду — у [`../CLAUDE.md`](../CLAUDE.md).
 
-> **Стан (2026-10-02):** задачі 1–4 виконано — репо `ulquorium/youtube-subs-first` (публічне, MIT),
+> **Стан (2026-10-02):** задачі 1–4 виконано — репо `ulquorium/subscriptions-first` (публічне, MIT; спершу звалося `youtube-subs-first`),
 > `UPDATE_URL` прописано, `scripts/release.mjs` і `.github/workflows/release.yml` працюють, реліз v1.10.0 опубліковано.
 > Перевірка паритету `_locales` і мов `changelog.json` уже вбудована в `release.mjs` (задача 6 — без словників `content.js`).
 > Лишилось: 5 (Web Store), решта 6.
@@ -56,7 +56,7 @@
    з підказкою (тексти пише людина або Claude разом із нею, не генерувати мовчки).
 5. Оновлює `version.json` (`version`, `notes` — з першого запису changelog, пункти через `\n`).
 6. `node --check` для всіх `.js`, перевірка паритету ключів локалізації (задача 6).
-7. Збирає `dist/youtube-subs-first-<версія>.zip` **лише з файлів розширення**
+7. Збирає `dist/subscriptions-first-<версія>.zip` **лише з файлів розширення**
    (manifest, js, css, html, `_locales/`, `icons/`, `changelog.json`) — без `docs/`, `scripts/`, `.github/`,
    `README`, `version*.json`.
 8. Комітить «Release v<версія>», ставить тег `v<версія>`.

@@ -1,4 +1,7 @@
-# YouTube: Subscriptions First — контекст для Claude Code
+# Subscriptions First (для YouTube) — контекст для Claude Code
+
+Колишня назва «YouTube: Subscriptions First» (репо перейменовано на `ulquorium/subscriptions-first` у 1.13.0).
+Ідея бренду — як у Following First для Instagram: ти обираєш, що дивитися, а не алгоритм.
 
 Chrome-розширення (Manifest V3), яке перебудовує інтерфейс youtube.com під сценарій
 «підписки й власні списки замість алгоритмічної стрічки». Без збирання, без залежностей:
@@ -27,6 +30,13 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
   «Зберегти» на сторінці відео.
 - **Дошка на `/feed/playlists`:** колонка = список; DnD між колонками (переміщення; Alt — копія),
   DnD всередині колонки (порядок/черга), «×» вилучити, тост «Відмінити» на 5 с. Перемикач «Звичайний вигляд».
+  Колонки: заголовок перетягується (`board.draggingCol`, живе переставлення в `dragover` на `.ysf-board-cols`,
+  `finishColumnDrag` пише `prefs.playlists.order` — той самий порядок, що й у сайдбарі; `syncBoardColumns`
+  не переставляє колонки під час перетягування). Кнопка «⋯» (`openColMenu`, не для WL): «Перейменувати» —
+  поле замість заголовка, Enter/blur зберігає, Esc скасовує (`api.rename` = `browse/edit_playlist`
+  `ACTION_SET_PLAYLIST_NAME`); «Видалити список» — у два кліки (`api.deletePlaylist` = `playlist/delete`).
+  Обидва оптимістичні з відкатом і тостом. Перевірено в живій вкладці з підміненими запитами (форма запитів,
+  UI, порядок); реальні rename/delete на сервері YouTube ще не проганялись.
 - **Синхронізація:** зміни плейлистів ловляться через перехоплення `fetch`/XHR (`early.js`)
   і `PerformanceObserver` (`content.js`) → перечитування `/feed/playlists`.
 - **Локалізація:** uk / en / ru. Контент-скрипт — за `<html lang>` YouTube (fallback en);

@@ -3,10 +3,10 @@
     "message": "uk"
   },
   "extName": {
-    "message": "YouTube: Підписки понад усе"
+    "message": "Subscriptions First"
   },
   "extDescription": {
-    "message": "Підписки як головна сторінка, без Shorts, чистий сайдбар, дошка списків і зручне вікно «Зберегти в…»."
+    "message": "YouTube на твоїх умовах: підписки як головна, без Shorts, чистий сайдбар, дошка списків і зручне «Зберегти в…»."
   },
   "versionLabel": {
     "message": "Версія $VALUE$",
@@ -60,7 +60,7 @@
     "message": "Перевірка…"
   },
   "notifTitle": {
-    "message": "Вийшла YouTube: Підписки понад усе $VALUE$",
+    "message": "Subscriptions First: доступна версія $VALUE$",
     "placeholders": {
       "value": {
         "content": "$1"

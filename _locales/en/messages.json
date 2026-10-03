@@ -3,10 +3,10 @@
     "message": "en"
   },
   "extName": {
-    "message": "YouTube: Subscriptions First"
+    "message": "Subscriptions First"
   },
   "extDescription": {
-    "message": "Subscriptions as the home page, no Shorts, a clean sidebar, a playlist board and a better “Save to” dialog."
+    "message": "YouTube on your terms: subscriptions as home, no Shorts, a clean sidebar, a playlist board and a better “Save to” dialog."
   },
   "versionLabel": {
     "message": "Version $VALUE$",
@@ -60,7 +60,7 @@
     "message": "Checking…"
   },
   "notifTitle": {
-    "message": "YouTube: Subscriptions First $VALUE$ is out",
+    "message": "Subscriptions First $VALUE$ is out",
     "placeholders": {
       "value": {
         "content": "$1"

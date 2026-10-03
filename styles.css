@@ -938,3 +938,68 @@ yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
 html[dark] yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
   border-bottom-color: rgba(255, 255, 255, 0.15);
 }
+
+/* ---------- Дошка: дії з колонкою (⋯, перейменування, видалення, перетягування) ---------- */
+.ysf-col-head[draggable="true"] { cursor: grab; }
+.ysf-col.ysf-col-dragging { opacity: 0.4; }
+.ysf-col-more {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  margin: -4px -6px -4px 0;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ysf-muted);
+  font: 700 18px/28px "Roboto", "Arial", sans-serif;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+.ysf-col-head:hover .ysf-col-more,
+.ysf-col-more:focus-visible { opacity: 1; }
+.ysf-col-more:hover { background: var(--ysf-hover); color: var(--ysf-fg); }
+.ysf-col-rename {
+  flex: 1;
+  min-width: 0;
+  margin: -4px 0;
+  padding: 4px 8px;
+  border: 1px solid #065fd4;
+  border-radius: 8px;
+  background: var(--ysf-bg);
+  color: var(--ysf-fg);
+  font: 500 1.5rem "Roboto", "Arial", sans-serif;
+  outline: none;
+}
+.ysf-col-menu {
+  --ysf-menu-bg: #fff;
+  --ysf-menu-fg: #0f0f0f;
+  --ysf-menu-hover: rgba(0, 0, 0, 0.06);
+  position: fixed;
+  z-index: 3000;
+  width: 220px;
+  padding: 6px 0;
+  border-radius: 12px;
+  background: var(--ysf-menu-bg);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  font-family: "Roboto", "Arial", sans-serif;
+}
+html[dark] .ysf-col-menu {
+  --ysf-menu-bg: #282828;
+  --ysf-menu-fg: #f1f1f1;
+  --ysf-menu-hover: rgba(255, 255, 255, 0.1);
+}
+.ysf-menu-item {
+  display: block;
+  width: 100%;
+  padding: 9px 16px;
+  border: 0;
+  background: none;
+  color: var(--ysf-menu-fg);
+  font: 400 1.4rem "Roboto", "Arial", sans-serif;
+  text-align: left;
+  cursor: pointer;
+}
+.ysf-menu-item:hover { background: var(--ysf-menu-hover); }
+.ysf-menu-item.ysf-danger { color: #e53935; }
+.ysf-menu-item.ysf-armed { background: #e53935; color: #fff; font-weight: 500; }

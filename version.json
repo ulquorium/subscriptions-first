@@ -1,9 +1,9 @@
 {
-  "version": "1.12.0",
-  "url": "https://github.com/ulquorium/youtube-subs-first/releases/tag/v1.12.0",
+  "version": "1.13.0",
+  "url": "https://github.com/ulquorium/subscriptions-first/releases/tag/v1.13.0",
   "notes": {
-    "en": "• The extension popup now has an “About” link to the description and help on GitHub.",
-    "uk": "• У вікні розширення з'явилося посилання «Про розширення» — опис і довідка на GitHub.",
-    "ru": "• В окне расширения появилась ссылка «О расширении» — описание и справка на GitHub."
+    "en": "• New name — Subscriptions First, new icon.\n• Playlist board: drag columns by their header, rename and delete lists (the “⋯” button).",
+    "uk": "• Нова назва — Subscriptions First, нова іконка.\n• Дошка списків: колонки перетягуються за заголовок, списки можна перейменувати й видалити (кнопка «⋯»).",
+    "ru": "• Новое название — Subscriptions First, новая иконка.\n• Доска списков: колонки перетаскиваются за заголовок, списки можно переименовать и удалить (кнопка «⋯»)."
   }
 }

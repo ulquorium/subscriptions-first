@@ -1,8 +1,9 @@
-# YouTube: Subscriptions First
+# Subscriptions First — for YouTube
 
-A Chrome extension that turns youtube.com into a subscriptions-first site: your
-channels and your own playlists instead of the algorithmic feed, no Shorts, and much
-better tools for organizing videos into lists.
+YouTube on your terms. A Chrome extension that turns youtube.com into a subscriptions-first
+site: the channels you chose and your own playlists instead of the algorithmic feed, no Shorts,
+and much better tools for organizing videos into lists. Sibling of
+[Following First for Instagram](https://github.com/ulquorium/following-first).
 
 *Українською: [README.uk.md](README.uk.md).*
 
@@ -33,9 +34,9 @@ tracking.
 
 The extension is not in the Chrome Web Store; it is installed from a GitHub release.
 
-1. Open the [latest release](https://github.com/ulquorium/youtube-subs-first/releases/latest) and download
-   `youtube-subs-first-X.Y.Z.zip` under **Assets**.
-2. Unzip it into a folder you will keep, e.g. `~/Extensions/youtube-subs-first`.
+1. Open the [latest release](https://github.com/ulquorium/subscriptions-first/releases/latest) and download
+   `subscriptions-first-X.Y.Z.zip` under **Assets**.
+2. Unzip it into a folder you will keep, e.g. `~/Extensions/subscriptions-first`.
 3. Open `chrome://extensions` and turn on **Developer mode** (top right).
 4. Click **Load unpacked** and select that folder.
 5. Reload youtube.com.

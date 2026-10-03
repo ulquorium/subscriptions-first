@@ -3,10 +3,10 @@
     "message": "ru"
   },
   "extName": {
-    "message": "YouTube: Подписки прежде всего"
+    "message": "Subscriptions First"
   },
   "extDescription": {
-    "message": "Подписки как главная страница, без Shorts, чистый сайдбар, доска списков и удобное окно «Сохранить в…»."
+    "message": "YouTube на ваших условиях: подписки как главная, без Shorts, чистый сайдбар, доска списков и удобное «Сохранить в…»."
   },
   "versionLabel": {
     "message": "Версия $VALUE$",
@@ -60,7 +60,7 @@
     "message": "Проверка…"
   },
   "notifTitle": {
-    "message": "Вышла YouTube: Подписки прежде всего $VALUE$",
+    "message": "Subscriptions First: доступна версия $VALUE$",
     "placeholders": {
       "value": {
         "content": "$1"

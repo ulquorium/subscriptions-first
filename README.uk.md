@@ -1,6 +1,6 @@
-# YouTube: Subscriptions First
+# Subscriptions First — для YouTube
 
-Chrome-розширення для youtube.com: підписки й власні списки замість алгоритмічної стрічки.
+YouTube на твоїх умовах. Chrome-розширення для youtube.com: канали, які ти обрав, і власні списки замість алгоритмічної стрічки. Пара до [Following First для Instagram](https://github.com/ulquorium/following-first).
 Інтерфейс українською, англійською й російською (за мовою YouTube; вікно розширення — за мовою Chrome).
 
 *English: [README.md](README.md).*
@@ -14,7 +14,7 @@ Chrome-розширення для youtube.com: підписки й власні
 <!-- Скріншот: додати сюди docs/screenshot.png -->
 
 ## Встановлення
-1. Завантаж zip з [останнього релізу](https://github.com/ulquorium/youtube-subs-first/releases/latest) (розділ **Assets**) і розпакуй у постійну папку, наприклад `~/Extensions/youtube-subs-first`.
+1. Завантаж zip з [останнього релізу](https://github.com/ulquorium/subscriptions-first/releases/latest) (розділ **Assets**) і розпакуй у постійну папку, наприклад `~/Extensions/subscriptions-first`.
 2. Відкрий `chrome://extensions` і ввімкни **Режим розробника**.
 3. **Завантажити розпаковане** → вибери цю папку.
 4. Перезавантаж вкладку YouTube.
@@ -38,7 +38,7 @@ Chrome-розширення для youtube.com: підписки й власні
    ```json
    { "version": "1.11.0", "uk": ["…"], "en": ["…"], "ru": ["…"] }
    ```
-2. `node scripts/release.mjs 1.11.0` — оновлює `version` у `manifest.json`, пише `version.json` (notes із changelog, посилання на реліз `v1.11.0`), перевіряє синтаксис `.js`/`.json` і паритет локалізацій, збирає `dist/youtube-subs-first-1.11.0.zip` лише з файлів розширення, комітить і ставить тег `v1.11.0`. (`--no-git` — без коміту й тегу.)
+2. `node scripts/release.mjs 1.11.0` — оновлює `version` у `manifest.json`, пише `version.json` (notes із changelog, посилання на реліз `v1.11.0`), перевіряє синтаксис `.js`/`.json` і паритет локалізацій, збирає `dist/subscriptions-first-1.11.0.zip` лише з файлів розширення, комітить і ставить тег `v1.11.0`. (`--no-git` — без коміту й тегу.)
 3. `git push --follow-tags` — GitHub Action (`.github/workflows/release.yml`) збирає zip із тегу й створює реліз із текстом із changelog (~1 хв).
 4. Протягом ~6 годин усі користувачі отримують сповіщення.
 

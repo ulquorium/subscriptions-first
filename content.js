@@ -30,11 +30,11 @@
 
   // Мова береться з інтерфейсу YouTube (<html lang>): uk / ru / en, для решти — англійська
   const lang = (document.documentElement.lang || navigator.language || 'en').slice(0, 2).toLowerCase();
-  const UK = { subs: 'Підписки', algo: 'Алгоритмічна', playlists: 'Списки', edit: 'Змінити порядок', done: 'Готово', more: 'Показати більше', less: 'Показати менше', hide: 'Сховати', show: 'Показати', saveTo: 'Зберегти в…', search: 'Пошук списку', loading: 'Завантаження…', nothing: 'Нічого не знайдено', failed: 'Не вдалося — спробуй ще раз', newListName: 'Новий список', create: 'Створити', close: 'Закрити', boardHint: 'Перетягуй відео, щоб змінити порядок або перемістити в інший список. З Alt — скопіювати.', gridView: 'Звичайний вигляд', boardView: 'Показати дошкою', retry: 'Ще раз', emptyList: 'Порожньо', removeFromList: 'Вилучити з цього списку', alreadyThere: 'Це відео вже є в цьому списку', undo: 'Відмінити', removedFrom: 'Вилучено з', movedTo: 'Переміщено в', copiedTo: 'Скопійовано в' };
-  const EN = { subs: 'Subscriptions', algo: 'Algorithmic', playlists: 'Playlists', edit: 'Reorder', done: 'Done', more: 'Show more', less: 'Show fewer', hide: 'Hide', show: 'Show', saveTo: 'Save to…', search: 'Search lists', loading: 'Loading…', nothing: 'Nothing found', failed: 'Failed — try again', newListName: 'New list', create: 'Create', close: 'Close', boardHint: 'Drag videos to reorder them or move them to another list. Hold Alt to copy.', gridView: 'Grid view', boardView: 'Board view', retry: 'Retry', emptyList: 'Empty', removeFromList: 'Remove from this list', alreadyThere: 'Already in this list', undo: 'Undo', removedFrom: 'Removed from', movedTo: 'Moved to', copiedTo: 'Copied to' };
+  const UK = { subs: 'Підписки', algo: 'Алгоритмічна', playlists: 'Списки', edit: 'Змінити порядок', done: 'Готово', more: 'Показати більше', less: 'Показати менше', hide: 'Сховати', show: 'Показати', saveTo: 'Зберегти в…', search: 'Пошук списку', loading: 'Завантаження…', nothing: 'Нічого не знайдено', failed: 'Не вдалося — спробуй ще раз', newListName: 'Новий список', create: 'Створити', close: 'Закрити', boardHint: 'Перетягуй відео, щоб змінити порядок або перемістити в інший список. З Alt — скопіювати. Заголовок колонки теж перетягується.', gridView: 'Звичайний вигляд', boardView: 'Показати дошкою', retry: 'Ще раз', emptyList: 'Порожньо', removeFromList: 'Вилучити з цього списку', alreadyThere: 'Це відео вже є в цьому списку', undo: 'Відмінити', removedFrom: 'Вилучено з', movedTo: 'Переміщено в', copiedTo: 'Скопійовано в', listActions: 'Дії зі списком', rename: 'Перейменувати', deleteList: 'Видалити список', deleteSure: 'Натисни ще раз, щоб видалити', deleted: 'Видалено список' };
+  const EN = { subs: 'Subscriptions', algo: 'Algorithmic', playlists: 'Playlists', edit: 'Reorder', done: 'Done', more: 'Show more', less: 'Show fewer', hide: 'Hide', show: 'Show', saveTo: 'Save to…', search: 'Search lists', loading: 'Loading…', nothing: 'Nothing found', failed: 'Failed — try again', newListName: 'New list', create: 'Create', close: 'Close', boardHint: 'Drag videos to reorder them or move them to another list. Hold Alt to copy. Drag a column header to reorder lists.', gridView: 'Grid view', boardView: 'Board view', retry: 'Retry', emptyList: 'Empty', removeFromList: 'Remove from this list', alreadyThere: 'Already in this list', undo: 'Undo', removedFrom: 'Removed from', movedTo: 'Moved to', copiedTo: 'Copied to', listActions: 'List actions', rename: 'Rename', deleteList: 'Delete list', deleteSure: 'Click again to delete', deleted: 'Deleted list' };
   const L = {
     uk: UK,
-    ru: { subs: 'Подписки', algo: 'Алгоритмическая', playlists: 'Списки', edit: 'Изменить порядок', done: 'Готово', more: 'Показать больше', less: 'Свернуть', hide: 'Скрыть', show: 'Показать', saveTo: 'Сохранить в…', search: 'Поиск списка', loading: 'Загрузка…', nothing: 'Ничего не найдено', failed: 'Не удалось — попробуй ещё раз', newListName: 'Новый список', create: 'Создать', close: 'Закрыть', boardHint: 'Перетаскивай видео, чтобы изменить порядок или переместить в другой список. С Alt — скопировать.', gridView: 'Обычный вид', boardView: 'Показать доской', retry: 'Ещё раз', emptyList: 'Пусто', removeFromList: 'Удалить из этого списка', alreadyThere: 'Это видео уже есть в этом списке', undo: 'Отменить', removedFrom: 'Удалено из', movedTo: 'Перемещено в', copiedTo: 'Скопировано в' },
+    ru: { subs: 'Подписки', algo: 'Алгоритмическая', playlists: 'Списки', edit: 'Изменить порядок', done: 'Готово', more: 'Показать больше', less: 'Свернуть', hide: 'Скрыть', show: 'Показать', saveTo: 'Сохранить в…', search: 'Поиск списка', loading: 'Загрузка…', nothing: 'Ничего не найдено', failed: 'Не удалось — попробуй ещё раз', newListName: 'Новый список', create: 'Создать', close: 'Закрыть', boardHint: 'Перетаскивай видео, чтобы изменить порядок или переместить в другой список. С Alt — скопировать. Заголовок колонки тоже перетаскивается.', gridView: 'Обычный вид', boardView: 'Показать доской', retry: 'Ещё раз', emptyList: 'Пусто', removeFromList: 'Удалить из этого списка', alreadyThere: 'Это видео уже есть в этом списке', undo: 'Отменить', removedFrom: 'Удалено из', movedTo: 'Перемещено в', copiedTo: 'Скопировано в', listActions: 'Действия со списком', rename: 'Переименовать', deleteList: 'Удалить список', deleteSure: 'Нажми ещё раз, чтобы удалить', deleted: 'Удалён список' },
     en: EN,
   }[lang] || EN;
   const NUM_LOCALE = { uk: 'uk-UA', ru: 'ru-RU', en: 'en-US' }[lang] || 'en-US';
@@ -211,6 +211,7 @@
   }
 
   const isMusicPlaylist = (id) => MUSIC_ID_PREFIXES.some((p) => id.startsWith(p));
+  const saveCache = () => { try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items: playlists })); } catch (_) {} };
 
   async function fetchPlaylists(force = false) {
     if (fetching || (!force && Date.now() - lastFetch < REFRESH_MS)) return;
@@ -241,7 +242,7 @@
       const wl = items.findIndex((p) => p.id === PINNED_FIRST);
       if (wl > 0) items.unshift(items.splice(wl, 1)[0]);
       playlists = items;
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ ts: Date.now(), items })); } catch (_) {}
+      saveCache();
       schedule();
     } catch (err) {
       console.warn('[YT Subs First] playlists fetch failed', err);
@@ -501,6 +502,13 @@
       const j = await innertube('playlist/create', { title, privacyStatus: 'PRIVATE', videoIds: [videoId] });
       return j.playlistId;
     },
+    async rename(playlistId, title) {
+      const j = await innertube('browse/edit_playlist', { playlistId, actions: [{ action: 'ACTION_SET_PLAYLIST_NAME', playlistName: title }] });
+      if (j.status && j.status !== 'STATUS_SUCCEEDED') throw new Error(j.status);
+    },
+    async deletePlaylist(playlistId) {
+      await innertube('playlist/delete', { playlistId });
+    },
   };
 
   function playlistIconEl(id, title) {
@@ -736,6 +744,7 @@
     root: null,
     columns: new Map(), // playlistId -> { id, title, count, videos: [], cont, loading, error, el }
     dragging: null, // { videoId, from }
+    draggingCol: null, // playlistId колонки, яку перетягують за заголовок
     loadedFor: '',
   };
 
@@ -798,11 +807,26 @@
     const cols = el('div', { className: 'ysf-board-cols' });
     // автопрокрутка вбік, коли тягнемо картку біля краю
     cols.addEventListener('dragover', (e) => {
-      if (!board.dragging) return;
+      if (!board.dragging && !board.draggingCol) return;
       const r = cols.getBoundingClientRect();
       if (e.clientX < r.left + 60) cols.scrollLeft -= 20;
       else if (e.clientX > r.right - 60) cols.scrollLeft += 20;
+      if (!board.draggingCol) return;
+      // перетягування колонки: переставляємо її наживо, порядок зберігаємо на drop/dragend
+      e.preventDefault();
+      e.dataTransfer.dropEffect = 'move';
+      const dragged = board.columns.get(board.draggingCol)?.el;
+      if (!dragged) return;
+      const others = [...cols.children].filter((n) => n !== dragged && n.classList.contains('ysf-col'));
+      const before = others.find((n) => {
+        const b = n.getBoundingClientRect();
+        return e.clientX < b.left + b.width / 2;
+      });
+      if (before) {
+        if (dragged.nextElementSibling !== before) cols.insertBefore(dragged, before);
+      } else if (cols.lastElementChild !== dragged) cols.appendChild(dragged);
     });
+    cols.addEventListener('drop', (e) => { if (board.draggingCol) { e.preventDefault(); finishColumnDrag(); } });
     return el('div', { id: 'ysf-board' }, [
       el('div', { className: 'ysf-board-head' }, [
         el('h1', { className: 'ysf-board-title', textContent: L.playlists }),
@@ -832,13 +856,28 @@
         col.count = p.count;
         renderColumnHead(col);
       }
-      if (colsEl.children[i] !== col.el) colsEl.insertBefore(col.el, colsEl.children[i] || null);
+      if (!board.draggingCol && colsEl.children[i] !== col.el) colsEl.insertBefore(col.el, colsEl.children[i] || null);
     });
   }
 
   function buildColumnEl(col) {
     const head = el('a', { className: 'ysf-col-head', href: '/playlist?list=' + encodeURIComponent(col.id) });
-    head.addEventListener('click', onPlainClick(() => navigateEndpoint(browseEndpoint('/playlist?list=' + col.id, 'VL' + col.id, 'WEB_PAGE_TYPE_PLAYLIST'), '/playlist?list=' + col.id)));
+    const open = onPlainClick(() => navigateEndpoint(browseEndpoint('/playlist?list=' + col.id, 'VL' + col.id, 'WEB_PAGE_TYPE_PLAYLIST'), '/playlist?list=' + col.id));
+    head.addEventListener('click', (e) => {
+      // перейменування або кнопка "⋯" — не відкривати список
+      if (col.renaming || e.target.closest('.ysf-col-more')) { e.preventDefault(); return; }
+      open(e);
+    });
+    // Заголовок перетягується — змінює порядок колонок (і списків у сайдбарі)
+    head.addEventListener('dragstart', (e) => {
+      if (col.renaming) { e.preventDefault(); return; }
+      board.draggingCol = col.id;
+      closeColMenu();
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/plain', col.id);
+      requestAnimationFrame(() => col.el.classList.add('ysf-col-dragging'));
+    });
+    head.addEventListener('dragend', finishColumnDrag);
     const body = el('div', { className: 'ysf-col-body' });
     const c = el('section', { className: 'ysf-col' }, [head, body]);
     c.dataset.id = col.id;
@@ -951,11 +990,137 @@
     const head = col.el.querySelector('.ysf-col-head');
     // офіційна кількість YouTube (з недоступними відео), інакше — скільки завантажили
     const n = col.count != null ? col.count : col.videos.length;
-    head.replaceChildren(
+    head.draggable = !col.renaming;
+    if (col.renaming) {
+      if (head.querySelector('.ysf-col-rename')) return;
+      const input = el('input', { className: 'ysf-col-rename', type: 'text', value: col.title, maxLength: 150 });
+      input.addEventListener('keydown', (e) => {
+        e.stopPropagation();
+        if (e.key === 'Enter') { e.preventDefault(); renamePlaylist(col, input.value); }
+        if (e.key === 'Escape') { e.preventDefault(); col.renaming = false; renderColumnHead(col); }
+      });
+      input.addEventListener('blur', () => renamePlaylist(col, input.value));
+      head.replaceChildren(playlistIconEl(col.id, col.title), input);
+      input.focus();
+      input.select();
+      return;
+    }
+    const kids = [
       playlistIconEl(col.id, col.title),
       el('span', { className: 'ysf-col-title', textContent: splitEmoji(col.title).name }),
       el('span', { className: 'ysf-col-count', textContent: n == null ? '' : String(n) }),
-    );
+    ];
+    // "Переглянути пізніше" — системний список: не перейменовується й не видаляється
+    if (col.id !== PINNED_FIRST) {
+      const more = el('button', { className: 'ysf-col-more', type: 'button', title: L.listActions, textContent: '⋯' });
+      more.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (colMenu && colMenu.dataset.id === col.id) closeColMenu();
+        else openColMenu(col, more);
+      });
+      kids.push(more);
+    }
+    head.replaceChildren(...kids);
+  }
+
+  // ---------- Колонки: порядок, перейменування, видалення ----------
+  function finishColumnDrag() {
+    if (!board.draggingCol) return;
+    board.columns.get(board.draggingCol)?.el.classList.remove('ysf-col-dragging');
+    board.draggingCol = null;
+    const ids = [...board.root.querySelectorAll('.ysf-board-cols > .ysf-col')].map((n) => n.dataset.id);
+    // приховані зі сайдбару списки зберігають свої місця в кінці
+    const rest = prefs.playlists.order.filter((id) => !ids.includes(id));
+    prefs.playlists.order = [...ids, ...rest];
+    savePrefs();
+    schedule();
+  }
+
+  let colMenu = null;
+  function closeColMenu() {
+    if (!colMenu) return;
+    colMenu.remove();
+    colMenu = null;
+  }
+  cleanups.push(closeColMenu);
+  on(document, 'mousedown', (e) => {
+    if (colMenu && !colMenu.contains(e.target) && !(e.target.closest && e.target.closest('.ysf-col-more'))) closeColMenu();
+  }, true);
+  on(document, 'keydown', (e) => { if (e.key === 'Escape') closeColMenu(); });
+  on(window, 'resize', closeColMenu);
+
+  function openColMenu(col, btn) {
+    closeColMenu();
+    const rename = el('button', { className: 'ysf-menu-item', type: 'button', textContent: L.rename });
+    rename.addEventListener('click', () => {
+      closeColMenu();
+      col.renaming = true;
+      renderColumnHead(col);
+    });
+    // Видалення — у два кліки: перший лише перепитує
+    const del = el('button', { className: 'ysf-menu-item ysf-danger', type: 'button', textContent: L.deleteList });
+    del.addEventListener('click', () => {
+      if (!del.classList.contains('ysf-armed')) {
+        del.classList.add('ysf-armed');
+        del.textContent = L.deleteSure;
+        return;
+      }
+      closeColMenu();
+      deletePlaylist(col);
+    });
+    colMenu = el('div', { className: 'ysf-col-menu' }, [rename, del]);
+    colMenu.dataset.id = col.id;
+    const r = btn.getBoundingClientRect();
+    colMenu.style.top = Math.round(r.bottom + 4) + 'px';
+    colMenu.style.left = Math.round(Math.max(8, Math.min(r.right - 220, innerWidth - 228))) + 'px';
+    document.body.appendChild(colMenu);
+  }
+
+  function setPlaylistTitle(col, title) {
+    col.title = title;
+    const p = playlists.find((x) => x.id === col.id);
+    if (p) p.title = title;
+    saveCache();
+    renderColumnHead(col);
+    schedule();
+  }
+
+  async function renamePlaylist(col, value) {
+    if (!col.renaming) return; // Enter і blur приходять обидва
+    col.renaming = false;
+    const title = value.trim();
+    if (!title || title === col.title) { renderColumnHead(col); return; }
+    const old = col.title;
+    setPlaylistTitle(col, title);
+    try {
+      await api.rename(col.id, title);
+      fetchPlaylists(true);
+    } catch (err) {
+      console.warn('[YT Subs First] rename failed', err);
+      setPlaylistTitle(col, old);
+      showToast(L.failed);
+    }
+  }
+
+  async function deletePlaylist(col) {
+    const i = playlists.findIndex((p) => p.id === col.id);
+    if (i < 0) return;
+    const item = playlists[i];
+    playlists.splice(i, 1); // колонку прибере syncBoardColumns
+    saveCache();
+    schedule();
+    try {
+      await api.deletePlaylist(col.id);
+      showToast(L.deleted + ' ' + quote(splitEmoji(item.title).name));
+      fetchPlaylists(true);
+    } catch (err) {
+      console.warn('[YT Subs First] delete failed', err);
+      playlists.splice(Math.min(i, playlists.length), 0, item);
+      saveCache();
+      schedule();
+      showToast(L.failed);
+    }
   }
 
   function renderColumn(col) {
