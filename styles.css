@@ -1,3 +1,9 @@
+/* Theme tokens. html[ysf-dark] is set by content.js from the page's real
+   background colour, so text stays readable whatever way YouTube switches
+   themes (html[dark], experiments, device theme). */
+html { --ysf-text: #0f0f0f; --ysf-text2: #606060; --ysf-base: #fff; }
+html[ysf-dark] { --ysf-text: #f1f1f1; --ysf-text2: #aaa; --ysf-base: #0f0f0f; }
+
 /* ---------- Shorts ---------- */
 ytd-guide-entry-renderer:has(a[title*="Shorts"]),
 ytd-guide-entry-renderer:has(a[href^="/shorts"]),
@@ -49,7 +55,7 @@ ytd-guide-section-renderer:has(a[href="/feed/history"]) ytd-guide-collapsible-en
   height: 40px;
   padding: 0 12px;
   border-radius: 10px;
-  color: var(--yt-spec-text-primary);
+  color: var(--ysf-text);
   text-decoration: none;
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 1.4rem;
@@ -62,8 +68,8 @@ ytd-guide-section-renderer:has(a[href="/feed/history"]) ytd-guide-collapsible-en
 .ysf-entry.ysf-active {
   background: rgba(0, 0, 0, 0.05);
 }
-html[dark] .ysf-entry:hover,
-html[dark] .ysf-entry.ysf-active {
+html[ysf-dark] .ysf-entry:hover,
+html[ysf-dark] .ysf-entry.ysf-active {
   background: rgba(255, 255, 255, 0.1);
 }
 .ysf-entry.ysf-active {
@@ -75,7 +81,7 @@ html[dark] .ysf-entry.ysf-active {
   margin-right: 24px;
   flex: none;
   display: inline-flex;
-  color: var(--yt-spec-text-primary);
+  color: var(--ysf-text);
   fill: currentColor;
 }
 .ysf-entry .ysf-icon yt-icon {
@@ -109,7 +115,7 @@ ytd-guide-section-renderer:has(a[href="/feed/history"]) {
   margin-left: 8px;
   font-size: 1.2rem;
   font-weight: 400;
-  color: var(--yt-spec-text-secondary);
+  color: var(--ysf-text2);
   font-variant-numeric: tabular-nums;
 }
 .ysf-entry .ysf-count:empty {
@@ -128,7 +134,7 @@ ytd-guide-section-renderer[ysf-native-subs] {
   padding: 12px 24px 12px 12px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-html[dark] .ysf-section {
+html[ysf-dark] .ysf-section {
   border-bottom-color: rgba(255, 255, 255, 0.2);
 }
 .ysf-section-header {
@@ -145,7 +151,7 @@ html[dark] .ysf-section {
   height: 40px;
   padding: 0 8px 0 12px;
   border-radius: 10px;
-  color: var(--yt-spec-text-primary);
+  color: var(--ysf-text);
   text-decoration: none;
   font-family: "Roboto", "Arial", sans-serif;
   font-size: 1.6rem;
@@ -156,8 +162,8 @@ html[dark] .ysf-section {
 .ysf-section-link.ysf-active {
   background: rgba(0, 0, 0, 0.05);
 }
-html[dark] .ysf-section-link:hover,
-html[dark] .ysf-section-link.ysf-active {
+html[ysf-dark] .ysf-section-link:hover,
+html[ysf-dark] .ysf-section-link.ysf-active {
   background: rgba(255, 255, 255, 0.1);
 }
 .ysf-section-link .ysf-section-title {
@@ -189,7 +195,7 @@ html[dark] .ysf-section-link.ysf-active {
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--yt-spec-text-secondary);
+  color: var(--ysf-text2);
   fill: currentColor;
   cursor: pointer;
   opacity: 0;
@@ -206,18 +212,18 @@ html[dark] .ysf-section-link.ysf-active {
 }
 .ysf-edit-btn:hover {
   background: rgba(0, 0, 0, 0.05);
-  color: var(--yt-spec-text-primary);
+  color: var(--ysf-text);
 }
-html[dark] .ysf-edit-btn:hover {
+html[ysf-dark] .ysf-edit-btn:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 .ysf-editing .ysf-edit-btn {
-  background: var(--yt-spec-text-primary);
-  color: var(--yt-spec-base-background, #fff);
+  background: var(--ysf-text);
+  color: var(--ysf-base);
 }
 .ysf-editing .ysf-edit-btn:hover {
-  background: var(--yt-spec-text-primary);
-  color: var(--yt-spec-base-background, #fff);
+  background: var(--ysf-text);
+  color: var(--ysf-base);
   opacity: 0.85;
 }
 .ysf-edit-btn svg {
@@ -256,7 +262,7 @@ html[dark] .ysf-edit-btn:hover {
 .ysf-editing .ysf-entry[data-id]:hover {
   background: rgba(0, 0, 0, 0.05);
 }
-html[dark] .ysf-editing .ysf-entry[data-id]:hover {
+html[ysf-dark] .ysf-editing .ysf-entry[data-id]:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 .ysf-entry.ysf-hidden-item .ysf-icon,
@@ -279,15 +285,15 @@ html[dark] .ysf-editing .ysf-entry[data-id]:hover {
   border: 0;
   border-radius: 50%;
   background: transparent;
-  color: var(--yt-spec-text-secondary);
+  color: var(--ysf-text2);
   fill: currentColor;
   cursor: pointer;
 }
 .ysf-eye-btn:hover {
   background: rgba(0, 0, 0, 0.08);
-  color: var(--yt-spec-text-primary);
+  color: var(--ysf-text);
 }
-html[dark] .ysf-eye-btn:hover {
+html[ysf-dark] .ysf-eye-btn:hover {
   background: rgba(255, 255, 255, 0.15);
 }
 .ysf-eye-btn svg {
@@ -298,7 +304,7 @@ html[dark] .ysf-eye-btn:hover {
   flex: none;
   display: inline-flex;
   margin-left: 2px;
-  color: var(--yt-spec-text-secondary);
+  color: var(--ysf-text2);
   fill: currentColor;
 }
 .ysf-grip svg {
@@ -344,7 +350,7 @@ ytd-menu-popup-renderer #items > [ysf-save-item] {
   margin-bottom: 8px;
   padding-bottom: 8px;
 }
-html[dark] ytd-menu-popup-renderer #items > [ysf-save-item] {
+html[ysf-dark] ytd-menu-popup-renderer #items > [ysf-save-item] {
   border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -379,7 +385,7 @@ html[dark] ytd-menu-popup-renderer #items > [ysf-save-item] {
   box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
   overflow: hidden;
 }
-html[dark] .ysf-sp-dialog {
+html[ysf-dark] .ysf-sp-dialog {
   --ysf-bg: #212121;
   --ysf-fg: #f1f1f1;
   --ysf-muted: #aaa;
@@ -568,7 +574,7 @@ html[dark] .ysf-sp-dialog {
   border: 0;
   border-radius: 18px;
   background: var(--ysf-field, var(--yt-spec-badge-chip-background, rgba(0, 0, 0, 0.05)));
-  color: var(--ysf-fg, var(--yt-spec-text-primary));
+  color: var(--ysf-fg, var(--ysf-text));
   font: 500 1.4rem "Roboto", "Arial", sans-serif;
   cursor: pointer;
 }
@@ -672,7 +678,7 @@ html[ysf-board-on] ytd-browse yt-page-header-renderer {
   color: var(--ysf-fg);
   font-family: "Roboto", "Arial", sans-serif;
 }
-html[dark] #ysf-board {
+html[ysf-dark] #ysf-board {
   --ysf-bg: #0f0f0f;
   --ysf-fg: #f1f1f1;
   --ysf-muted: #aaa;
@@ -919,8 +925,8 @@ ytd-guide-renderer #sections > .ysf-section::after {
   background: rgba(0, 0, 0, 0.1);
   pointer-events: none;
 }
-html[dark] ytd-guide-renderer #sections > ytd-guide-section-renderer:not(:has(a[href="/feed/history"]))::after,
-html[dark] ytd-guide-renderer #sections > .ysf-section::after {
+html[ysf-dark] ytd-guide-renderer #sections > ytd-guide-section-renderer:not(:has(a[href="/feed/history"]))::after,
+html[ysf-dark] ytd-guide-renderer #sections > .ysf-section::after {
   background: rgba(255, 255, 255, 0.2);
 }
 
@@ -935,7 +941,7 @@ yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
   margin-bottom: 8px;
   padding-bottom: 8px;
 }
-html[dark] yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
+html[ysf-dark] yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
   border-bottom-color: rgba(255, 255, 255, 0.15);
 }
 
@@ -984,7 +990,7 @@ html[dark] yt-sheet-view-model yt-list-view-model > [ysf-save-item] {
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.06);
   font-family: "Roboto", "Arial", sans-serif;
 }
-html[dark] .ysf-col-menu {
+html[ysf-dark] .ysf-col-menu {
   --ysf-menu-bg: #282828;
   --ysf-menu-fg: #f1f1f1;
   --ysf-menu-hover: rgba(255, 255, 255, 0.1);

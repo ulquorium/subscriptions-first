@@ -1375,7 +1375,20 @@
   }
 
   // ---------- Основна функція ----------
+  // Темна чи світла тема — за справжнім кольором фону (не за html[dark]: YouTube
+  // вмикає тему по-різному в різних версіях/експериментах).
+  function pageIsDark() {
+    for (const e of [document.querySelector('ytd-app'), document.body, document.documentElement]) {
+      if (!e) continue;
+      const m = getComputedStyle(e).backgroundColor.match(/[\d.]+/g);
+      if (m && (m[3] === undefined || +m[3] > 0.5)) return 0.299 * m[0] + 0.587 * m[1] + 0.114 * m[2] < 128;
+    }
+    return document.documentElement.hasAttribute('dark');
+  }
+
   function apply() {
+    const dark = pageIsDark();
+    if (document.documentElement.hasAttribute('ysf-dark') !== dark) document.documentElement.toggleAttribute('ysf-dark', dark);
     // Мітка поточної сторінки для CSS
     const page = location.pathname === SUBS_URL ? 'subscriptions'
       : location.pathname === PLAYLISTS_URL ? 'playlists'

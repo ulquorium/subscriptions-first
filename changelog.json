@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.13.1",
+    "uk": [
+      "Темна тема: текст у сайдбарі та вікнах розширення тепер завжди світлий — навіть у версіях YouTube, які вмикають темну тему інакше."
+    ],
+    "en": [
+      "Dark theme: sidebar and dialog text is now always light — even in YouTube versions that switch to dark differently."
+    ],
+    "ru": [
+      "Тёмная тема: текст в сайдбаре и окнах расширения теперь всегда светлый — даже в версиях YouTube, которые включают тёмную тему иначе."
+    ]
+  },
+  {
     "version": "1.13.0",
     "uk": [
       "Нова назва — Subscriptions First, нова іконка.",

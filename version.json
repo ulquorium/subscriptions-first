@@ -1,9 +1,9 @@
 {
-  "version": "1.13.0",
-  "url": "https://github.com/ulquorium/subscriptions-first/releases/tag/v1.13.0",
+  "version": "1.13.1",
+  "url": "https://github.com/ulquorium/subscriptions-first/releases/tag/v1.13.1",
   "notes": {
-    "en": "• New name — Subscriptions First, new icon.\n• Playlist board: drag columns by their header, rename and delete lists (the “⋯” button).",
-    "uk": "• Нова назва — Subscriptions First, нова іконка.\n• Дошка списків: колонки перетягуються за заголовок, списки можна перейменувати й видалити (кнопка «⋯»).",
-    "ru": "• Новое название — Subscriptions First, новая иконка.\n• Доска списков: колонки перетаскиваются за заголовок, списки можно переименовать и удалить (кнопка «⋯»)."
+    "en": "• Dark theme: sidebar and dialog text is now always light — even in YouTube versions that switch to dark differently.",
+    "uk": "• Темна тема: текст у сайдбарі та вікнах розширення тепер завжди світлий — навіть у версіях YouTube, які вмикають темну тему інакше.",
+    "ru": "• Тёмная тема: текст в сайдбаре и окнах расширения теперь всегда светлый — даже в версиях YouTube, которые включают тёмную тему иначе."
   }
 }

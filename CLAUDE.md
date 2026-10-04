@@ -88,6 +88,12 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 Деталі роботи сповіщень (alarm, storage, бейджі, повідомлення `check-now` / `refresh-badge` / `status`) —
 розділ «Update notifier» у CLAUDE.md Instagram.
 
+## Тема (світла / темна)
+- `content.js` → `pageIsDark()` у кожному `apply()`: яскравість фону `ytd-app` (далі `body`, `html`) →
+  `<html ysf-dark>`. **Не покладатися на `html[dark]` і `--yt-spec-text-*`**: у частини користувачів YouTube
+  робить темним лише `ytd-app`, а `html` лишається світлим (тоді `--yt-spec-text-primary` = чорний → чорний
+  текст на темному). Усі кольори — токени `--ysf-text` / `--ysf-text2` / `--ysf-base` на `html` / `html[ysf-dark]`.
+
 ## Правила, які не можна порушувати
 
 - **Trusted Types.** YouTube вмикає TT: жодного `innerHTML`/`outerHTML =`/`insertAdjacentHTML`.
