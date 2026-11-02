@@ -30,11 +30,11 @@
 
   // Мова береться з інтерфейсу YouTube (<html lang>): uk / ru / en, для решти — англійська
   const lang = (document.documentElement.lang || navigator.language || 'en').slice(0, 2).toLowerCase();
-  const UK = { subs: 'Підписки', algo: 'Алгоритмічна', playlists: 'Списки', edit: 'Змінити порядок', done: 'Готово', more: 'Показати більше', less: 'Показати менше', hide: 'Сховати', show: 'Показати', saveTo: 'Зберегти в…', search: 'Пошук списку', loading: 'Завантаження…', nothing: 'Нічого не знайдено', failed: 'Не вдалося — спробуй ще раз', newListName: 'Новий список', create: 'Створити', close: 'Закрити', boardHint: 'Перетягуй відео, щоб змінити порядок або перемістити в інший список. З Alt — скопіювати. Заголовок колонки теж перетягується.', gridView: 'Звичайний вигляд', boardView: 'Показати дошкою', retry: 'Ще раз', emptyList: 'Порожньо', removeFromList: 'Вилучити з цього списку', alreadyThere: 'Це відео вже є в цьому списку', undo: 'Відмінити', removedFrom: 'Вилучено з', movedTo: 'Переміщено в', copiedTo: 'Скопійовано в', listActions: 'Дії зі списком', rename: 'Перейменувати', deleteList: 'Видалити список', deleteSure: 'Натисни ще раз, щоб видалити', deleted: 'Видалено список' };
-  const EN = { subs: 'Subscriptions', algo: 'Algorithmic', playlists: 'Playlists', edit: 'Reorder', done: 'Done', more: 'Show more', less: 'Show fewer', hide: 'Hide', show: 'Show', saveTo: 'Save to…', search: 'Search lists', loading: 'Loading…', nothing: 'Nothing found', failed: 'Failed — try again', newListName: 'New list', create: 'Create', close: 'Close', boardHint: 'Drag videos to reorder them or move them to another list. Hold Alt to copy. Drag a column header to reorder lists.', gridView: 'Grid view', boardView: 'Board view', retry: 'Retry', emptyList: 'Empty', removeFromList: 'Remove from this list', alreadyThere: 'Already in this list', undo: 'Undo', removedFrom: 'Removed from', movedTo: 'Moved to', copiedTo: 'Copied to', listActions: 'List actions', rename: 'Rename', deleteList: 'Delete list', deleteSure: 'Click again to delete', deleted: 'Deleted list' };
+  const UK = { subs: 'Підписки', algo: 'Алгоритмічна', playlists: 'Списки', edit: 'Змінити порядок', done: 'Готово', more: 'Показати більше', less: 'Показати менше', hide: 'Сховати', show: 'Показати', saveTo: 'Зберегти в…', search: 'Пошук списку', loading: 'Завантаження…', nothing: 'Нічого не знайдено', failed: 'Не вдалося — спробуй ще раз', newListName: 'Новий список', create: 'Створити', close: 'Закрити', boardHint: 'Перетягуй відео, щоб змінити порядок або перемістити в інший список. З Alt — скопіювати. Заголовок колонки теж перетягується.', gridView: 'Звичайний вигляд', boardView: 'Показати дошкою', retry: 'Ще раз', emptyList: 'Порожньо', removeFromList: 'Вилучити з цього списку', alreadyThere: 'Це відео вже є в цьому списку', undo: 'Відмінити', removedFrom: 'Вилучено з', movedTo: 'Переміщено в', copiedTo: 'Скопійовано в', listActions: 'Дії зі списком', rename: 'Перейменувати', deleteList: 'Видалити список', deleteSure: 'Натисни ще раз, щоб видалити', deleted: 'Видалено список', feeds: 'Стрічки', allSubs: 'Усі підписки', newFeed: 'Нова стрічка', editFeed: 'Налаштувати стрічку', feedName: 'Назва стрічки', searchChannels: 'Пошук каналу', deleteFeed: 'Видалити стрічку', emptyFeed: 'У цій стрічці ще немає каналів.', addChannels: 'Додати канали', noFeedVideos: 'Відео поки немає', feedFailed: 'Не всі канали завантажились', views: 'переглядів', refresh: 'Оновити', noSubsYet: 'Відкрий бічну панель YouTube, щоб завантажився список підписок' };
+  const EN = { subs: 'Subscriptions', algo: 'Algorithmic', playlists: 'Playlists', edit: 'Reorder', done: 'Done', more: 'Show more', less: 'Show fewer', hide: 'Hide', show: 'Show', saveTo: 'Save to…', search: 'Search lists', loading: 'Loading…', nothing: 'Nothing found', failed: 'Failed — try again', newListName: 'New list', create: 'Create', close: 'Close', boardHint: 'Drag videos to reorder them or move them to another list. Hold Alt to copy. Drag a column header to reorder lists.', gridView: 'Grid view', boardView: 'Board view', retry: 'Retry', emptyList: 'Empty', removeFromList: 'Remove from this list', alreadyThere: 'Already in this list', undo: 'Undo', removedFrom: 'Removed from', movedTo: 'Moved to', copiedTo: 'Copied to', listActions: 'List actions', rename: 'Rename', deleteList: 'Delete list', deleteSure: 'Click again to delete', deleted: 'Deleted list', feeds: 'Feeds', allSubs: 'All subscriptions', newFeed: 'New feed', editFeed: 'Edit feed', feedName: 'Feed name', searchChannels: 'Search channels', deleteFeed: 'Delete feed', emptyFeed: 'No channels in this feed yet.', addChannels: 'Add channels', noFeedVideos: 'No videos yet', feedFailed: 'Some channels failed to load', views: 'views', refresh: 'Refresh', noSubsYet: 'Open the YouTube sidebar so your subscriptions load' };
   const L = {
     uk: UK,
-    ru: { subs: 'Подписки', algo: 'Алгоритмическая', playlists: 'Списки', edit: 'Изменить порядок', done: 'Готово', more: 'Показать больше', less: 'Свернуть', hide: 'Скрыть', show: 'Показать', saveTo: 'Сохранить в…', search: 'Поиск списка', loading: 'Загрузка…', nothing: 'Ничего не найдено', failed: 'Не удалось — попробуй ещё раз', newListName: 'Новый список', create: 'Создать', close: 'Закрыть', boardHint: 'Перетаскивай видео, чтобы изменить порядок или переместить в другой список. С Alt — скопировать. Заголовок колонки тоже перетаскивается.', gridView: 'Обычный вид', boardView: 'Показать доской', retry: 'Ещё раз', emptyList: 'Пусто', removeFromList: 'Удалить из этого списка', alreadyThere: 'Это видео уже есть в этом списке', undo: 'Отменить', removedFrom: 'Удалено из', movedTo: 'Перемещено в', copiedTo: 'Скопировано в', listActions: 'Действия со списком', rename: 'Переименовать', deleteList: 'Удалить список', deleteSure: 'Нажми ещё раз, чтобы удалить', deleted: 'Удалён список' },
+    ru: { subs: 'Подписки', algo: 'Алгоритмическая', playlists: 'Списки', edit: 'Изменить порядок', done: 'Готово', more: 'Показать больше', less: 'Свернуть', hide: 'Скрыть', show: 'Показать', saveTo: 'Сохранить в…', search: 'Поиск списка', loading: 'Загрузка…', nothing: 'Ничего не найдено', failed: 'Не удалось — попробуй ещё раз', newListName: 'Новый список', create: 'Создать', close: 'Закрыть', boardHint: 'Перетаскивай видео, чтобы изменить порядок или переместить в другой список. С Alt — скопировать. Заголовок колонки тоже перетаскивается.', gridView: 'Обычный вид', boardView: 'Показать доской', retry: 'Ещё раз', emptyList: 'Пусто', removeFromList: 'Удалить из этого списка', alreadyThere: 'Это видео уже есть в этом списке', undo: 'Отменить', removedFrom: 'Удалено из', movedTo: 'Перемещено в', copiedTo: 'Скопировано в', listActions: 'Действия со списком', rename: 'Переименовать', deleteList: 'Удалить список', deleteSure: 'Нажми ещё раз, чтобы удалить', deleted: 'Удалён список', feeds: 'Ленты', allSubs: 'Все подписки', newFeed: 'Новая лента', editFeed: 'Настроить ленту', feedName: 'Название ленты', searchChannels: 'Поиск канала', deleteFeed: 'Удалить ленту', emptyFeed: 'В этой ленте ещё нет каналов.', addChannels: 'Добавить каналы', noFeedVideos: 'Видео пока нет', feedFailed: 'Не все каналы загрузились', views: 'просмотров', refresh: 'Обновить', noSubsYet: 'Открой боковую панель YouTube, чтобы загрузился список подписок' },
     en: EN,
   }[lang] || EN;
   const NUM_LOCALE = { uk: 'uk-UA', ru: 'ru-RU', en: 'en-US' }[lang] || 'en-US';
@@ -66,6 +66,9 @@
     check: 'M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
     eye: 'M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 0 6 3 3 0 0 0 0-6z',
     eyeOff: 'M12 7a5 5 0 0 1 5 5c0 .65-.13 1.26-.36 1.83l2.92 2.92A11.8 11.8 0 0 0 23 12c-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16A4.9 4.9 0 0 1 12 7zM2 4.27l2.74 2.74A11.8 11.8 0 0 0 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84L19.73 22 21 20.73 3.27 3 2 4.27zm5.53 5.53 1.55 1.55A3 3 0 0 0 12 15c.22 0 .44-.03.65-.08l1.55 1.55A5 5 0 0 1 7.53 9.8zm4.31-.78 3.15 3.15.01-.17a3 3 0 0 0-3-3l-.16.02z',
+    feed: 'M4 5h16v2H4V5zm0 6h16v2H4v-2zm0 6h10v2H4v-2z',
+    plus: 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z',
+    refresh: 'M17.65 6.35A7.95 7.95 0 0 0 12 4a8 8 0 1 0 7.73 10h-2.08A6 6 0 1 1 12 6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z',
     grip: 'M9 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1.5 8a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zM18 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM16.5 13.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm1.5 5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z',
   };
 
@@ -77,13 +80,13 @@
   }
 
   // ---------- Налаштування (порядок, приховані) ----------
-  const defaultPrefs = () => ({ subs: { order: [], hidden: [], expanded: false }, playlists: { order: [], hidden: [], expanded: false } });
+  const defaultPrefs = () => ({ subs: { order: [], hidden: [], expanded: false }, playlists: { order: [], hidden: [], expanded: false }, feeds: { order: [], hidden: [], expanded: false }, feedDefs: [], channelFeeds: {} });
   let prefs = defaultPrefs();
   function loadPrefs() {
     prefs = defaultPrefs();
     try {
       const p = JSON.parse(localStorage.getItem(PREFS_KEY) || 'null');
-      if (p) prefs = { ...prefs, ...p, subs: { ...prefs.subs, ...p.subs }, playlists: { ...prefs.playlists, ...p.playlists } };
+      if (p) prefs = { ...prefs, ...p, subs: { ...prefs.subs, ...p.subs }, playlists: { ...prefs.playlists, ...p.playlists }, feeds: { ...prefs.feeds, ...p.feeds } };
     } catch (_) {}
   }
   loadPrefs();
@@ -133,6 +136,7 @@
     if (!logo || !isPlainClick(e)) return;
     e.preventDefault();
     e.stopImmediatePropagation();
+    setActiveFeed(null);
     goSubs();
   }, true);
 
@@ -142,7 +146,7 @@
       el('span', { className: 'ysf-icon' }, [ytIcon('TAB_SHORTS_CAIRO')]),
       el('span', { className: 'ysf-title', textContent: L.subs }),
     ]);
-    a.addEventListener('click', onPlainClick(goSubs));
+    a.addEventListener('click', onPlainClick(() => { setActiveFeed(null); goSubs(); }));
     return a;
   }
 
@@ -1308,6 +1312,315 @@
     document.documentElement.removeAttribute('ysf-board-on');
   });
 
+
+  // =====================================================================
+  // ---------- Стрічки: власні стрічки з груп каналів ----------
+  // prefs.feedDefs = [{ id, name }], prefs.channelFeeds = { UC…: [feedId, …] }
+  // (синхронізуються разом з prefs). Відео — з публічного RSS кожного каналу
+  // (/feeds/videos.xml?channel_id=…, той самий сайт, без входу й без innertube),
+  // Shorts відкидаються, найновіші — першими. На /feed/subscriptions — чипи
+  // стрічок; вибрана стрічка показує свою сітку замість рідної.
+  // =====================================================================
+  const FEED_KEY = 'ysf-active-feed';
+  const RSS_TTL = 30 * 60 * 1000;
+  const rssCache = new Map(); // channelId -> { ts, items }
+  let activeFeed = null;
+  try { activeFeed = sessionStorage.getItem(FEED_KEY) || null; } catch (_) {}
+  const feedDefs = () => (Array.isArray(prefs.feedDefs) ? prefs.feedDefs : (prefs.feedDefs = []));
+  const channelFeeds = () => (prefs.channelFeeds && typeof prefs.channelFeeds === 'object' ? prefs.channelFeeds : (prefs.channelFeeds = {}));
+  const channelsOf = (feedId) => Object.keys(channelFeeds()).filter((ch) => (channelFeeds()[ch] || []).includes(feedId));
+  function setActiveFeed(id) {
+    activeFeed = id || null;
+    try { if (activeFeed) sessionStorage.setItem(FEED_KEY, activeFeed); else sessionStorage.removeItem(FEED_KEY); } catch (_) {}
+    schedule();
+  }
+
+  const unxml = (t) => t.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&');
+  // Без DOMParser (Trusted Types) — RSS простий, вистачає регулярок.
+  function parseRss(xml, channelId) {
+    const out = [];
+    for (const m of xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)) {
+      const e = m[1];
+      const pick = (re) => { const x = e.match(re); return x ? unxml(x[1]) : ''; };
+      const id = pick(/<yt:videoId>([^<]+)</);
+      const link = pick(/<link rel="alternate" href="([^"]+)"/);
+      if (!id || /\/shorts\//.test(link)) continue;
+      const views = pick(/<media:statistics views="(\d+)"/);
+      out.push({
+        id,
+        channelId,
+        title: pick(/<title>([^<]*)<\/title>/),
+        author: pick(/<author>\s*<name>([^<]*)<\/name>/),
+        published: Date.parse(pick(/<published>([^<]+)</)) || 0,
+        views: views ? Number(views) : null,
+      });
+    }
+    return out;
+  }
+  async function rssFor(ch, force) {
+    const c = rssCache.get(ch);
+    if (c && !force && Date.now() - c.ts < RSS_TTL) return c.items;
+    const r = await fetch('/feeds/videos.xml?channel_id=' + encodeURIComponent(ch), { credentials: 'omit' });
+    if (!r.ok) throw new Error('rss ' + r.status);
+    const items = parseRss(await r.text(), ch);
+    rssCache.set(ch, { ts: Date.now(), items });
+    return items;
+  }
+
+  const feedView = { bar: null, root: null, grid: null, note: null, key: '', gen: 0, items: [], loading: false, failed: 0 };
+  async function loadFeed(id, force) {
+    const gen = ++feedView.gen;
+    const chans = channelsOf(id);
+    feedView.loading = true;
+    feedView.items = [];
+    renderFeed();
+    const all = [];
+    let failed = 0;
+    let i = 0;
+    // По 6 каналів паралельно
+    await Promise.all(Array.from({ length: Math.min(6, chans.length) }, async () => {
+      while (i < chans.length) {
+        const ch = chans[i++];
+        try { all.push(...await rssFor(ch, force)); } catch (_) { failed++; }
+      }
+    }));
+    if (gen !== feedView.gen) return;
+    all.sort((a, b) => b.published - a.published);
+    feedView.items = all.slice(0, 150);
+    feedView.failed = failed;
+    feedView.loading = false;
+    renderFeed();
+  }
+
+  const RTF = (() => { try { return new Intl.RelativeTimeFormat(lang, { numeric: 'auto' }); } catch (_) { return null; } })();
+  function ago(ts) {
+    if (!RTF || !ts) return '';
+    const s = (ts - Date.now()) / 1000;
+    for (const [unit, sec] of [['year', 31536000], ['month', 2592000], ['week', 604800], ['day', 86400], ['hour', 3600], ['minute', 60]]) {
+      if (Math.abs(s) >= sec) return RTF.format(Math.round(s / sec), unit);
+    }
+    return RTF.format(0, 'minute');
+  }
+  const compact = (() => { try { return new Intl.NumberFormat(NUM_LOCALE, { notation: 'compact' }); } catch (_) { return null; } })();
+
+  function feedCard(v) {
+    const url = '/watch?v=' + v.id;
+    const thumb = el('img', { src: 'https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg', alt: '', loading: 'lazy' });
+    const a = el('a', { className: 'ysf-fcard', href: url, title: v.title }, [
+      el('span', { className: 'ysf-fthumb' }, [thumb]),
+      el('span', { className: 'ysf-ftitle', textContent: v.title }),
+      el('span', { className: 'ysf-fmeta', textContent: v.author }),
+      el('span', { className: 'ysf-fmeta', textContent: [v.views != null && compact ? compact.format(v.views) + ' ' + L.views : null, ago(v.published)].filter(Boolean).join(' · ') }),
+    ]);
+    a.addEventListener('click', onPlainClick(() => navigateEndpoint({
+      commandMetadata: { webCommandMetadata: { url, webPageType: 'WEB_PAGE_TYPE_WATCH' } },
+      watchEndpoint: { videoId: v.id },
+    }, url)));
+    const save = el('button', { className: 'ysf-fsave', type: 'button', title: L.saveTo }, [svgIcon(PATH.playlistAdd)]);
+    save.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openSavePanel(v.id, v.title); });
+    a.append(save);
+    return a;
+  }
+
+  function renderFeed() {
+    if (!feedView.root || !activeFeed) return;
+    const chans = channelsOf(activeFeed);
+    const key = JSON.stringify([activeFeed, feedView.loading, feedView.items.map((v) => v.id), feedView.failed, chans.length]);
+    if (feedView.root.dataset.key === key) return;
+    feedView.root.dataset.key = key;
+    feedView.grid.replaceChildren(...feedView.items.map(feedCard));
+    let note = '';
+    if (!chans.length) {
+      const add = el('button', { className: 'ysf-sp-btn', type: 'button', textContent: L.addChannels });
+      add.addEventListener('click', () => openFeedEditor(activeFeed));
+      feedView.note.replaceChildren(el('div', { textContent: L.emptyFeed }), add);
+      return;
+    }
+    if (feedView.loading) note = L.loading;
+    else if (!feedView.items.length) note = feedView.failed ? L.failed : L.noFeedVideos;
+    else if (feedView.failed) note = L.feedFailed;
+    feedView.note.replaceChildren(...(note ? [el('div', { textContent: note })] : []));
+  }
+
+  function newFeed() {
+    const id = 'f' + Date.now().toString(36);
+    const n = feedDefs().length + 1;
+    feedDefs().push({ id, name: L.newFeed + (n > 1 ? ' ' + n : '') });
+    savePrefs();
+    setActiveFeed(id);
+    if (location.pathname !== SUBS_URL) goSubs();
+    openFeedEditor(id);
+  }
+
+  function buildFeedBar() {
+    const bar = el('div', { id: 'ysf-feedbar' });
+    return bar;
+  }
+  function renderFeedBar() {
+    const bar = feedView.bar;
+    const defs = sortByPrefs(feedDefs(), 'feeds').filter((f) => !prefs.feeds.hidden.includes(f.id));
+    const key = JSON.stringify([activeFeed, defs]);
+    if (bar.dataset.key === key) return;
+    bar.dataset.key = key;
+    const chip = (id, label, icon) => {
+      const b = el('button', { className: 'ysf-fchip' + ((activeFeed || null) === id ? ' ysf-on' : ''), type: 'button' }, [
+        ...(icon ? [icon] : []), el('span', { textContent: label }),
+      ]);
+      b.addEventListener('click', () => setActiveFeed(id));
+      return b;
+    };
+    const items = [chip(null, L.allSubs)];
+    for (const f of defs) {
+      const { emoji, name } = splitEmoji(f.name);
+      items.push(chip(f.id, name, emoji ? el('span', { className: 'ysf-femoji', textContent: emoji }) : null));
+    }
+    const add = el('button', { className: 'ysf-fchip ysf-fchip-ghost', type: 'button', title: L.newFeed }, [svgIcon(PATH.plus), el('span', { textContent: L.newFeed })]);
+    add.addEventListener('click', newFeed);
+    items.push(add);
+    if (activeFeed) {
+      const tools = el('span', { className: 'ysf-ftools' });
+      const refresh = el('button', { className: 'ysf-ficon', type: 'button', title: L.refresh }, [svgIcon(PATH.refresh)]);
+      refresh.addEventListener('click', () => { feedView.key = ''; loadFeed(activeFeed, true); });
+      const edit = el('button', { className: 'ysf-ficon', type: 'button', title: L.editFeed }, [svgIcon(PATH.edit)]);
+      edit.addEventListener('click', () => openFeedEditor(activeFeed));
+      tools.append(refresh, edit);
+      items.push(tools);
+    }
+    bar.replaceChildren(...items);
+  }
+
+  function applyFeeds() {
+    if (activeFeed && !feedDefs().some((f) => f.id === activeFeed)) activeFeed = null;
+    const onSubs = location.pathname === SUBS_URL;
+    const browse = onSubs && [...document.querySelectorAll('ytd-browse')].find((b) => !b.hidden && b.offsetParent && b.querySelector('ytd-rich-grid-renderer'));
+    const on = !!(browse && activeFeed);
+    if (document.documentElement.hasAttribute('ysf-feed-on') !== on) document.documentElement.toggleAttribute('ysf-feed-on', on);
+    if (!browse) return;
+    if (!feedView.bar) feedView.bar = buildFeedBar();
+    if (feedView.bar.parentElement !== browse || browse.firstElementChild !== feedView.bar) browse.prepend(feedView.bar);
+    renderFeedBar();
+    if (!on) { feedView.root?.remove(); feedView.key = ''; return; }
+    if (!feedView.root) {
+      feedView.grid = el('div', { className: 'ysf-fgrid' });
+      feedView.note = el('div', { className: 'ysf-fnote' });
+      feedView.root = el('div', { id: 'ysf-feed' }, [feedView.grid, feedView.note]);
+    }
+    if (feedView.root.previousElementSibling !== feedView.bar) feedView.bar.after(feedView.root);
+    // Перезавантажуємо, коли змінилась стрічка або її канали
+    const key = activeFeed + ':' + channelsOf(activeFeed).sort().join(',');
+    if (feedView.key !== key) { feedView.key = key; feedView.root.dataset.key = ''; loadFeed(activeFeed); }
+    renderFeed();
+  }
+  cleanups.push(() => {
+    feedView.bar?.remove();
+    feedView.root?.remove();
+    document.documentElement.removeAttribute('ysf-feed-on');
+    closeFeedEditor();
+  });
+
+  // ---------- Вікно налаштування стрічки: назва + канали ----------
+  let feedEditor = null;
+  function closeFeedEditor() { feedEditor?.remove(); feedEditor = null; }
+  on(document, 'keydown', (e) => { if (e.key === 'Escape' && feedEditor) closeFeedEditor(); });
+
+  function openFeedEditor(id) {
+    closeFeedEditor();
+    const def = feedDefs().find((f) => f.id === id);
+    if (!def) return;
+    const name = el('input', { className: 'ysf-fe-name', type: 'text', value: def.name, placeholder: L.feedName, maxLength: 60 });
+    let nameTimer = null;
+    name.addEventListener('input', () => {
+      def.name = name.value.trim() || L.newFeed;
+      clearTimeout(nameTimer);
+      nameTimer = setTimeout(() => { savePrefs(); schedule(); }, 300);
+    });
+    const search = el('input', { className: 'ysf-fe-search', type: 'search', placeholder: L.searchChannels });
+    const list = el('div', { className: 'ysf-fe-list' });
+    const initial = new Set(channelsOf(id));
+    const renderList = () => {
+      const q = search.value.trim().toLowerCase();
+      // Обрані — зверху (за станом на момент відкриття), далі — як у сайдбарі
+      const chans = sortByPrefs(subsItems, 'subs').filter((c) => !q || c.title.toLowerCase().includes(q));
+      chans.sort((a, b) => Number(initial.has(b.id)) - Number(initial.has(a.id)));
+      list.replaceChildren(...chans.map((c) => {
+        const cb = el('input', { type: 'checkbox', checked: (channelFeeds()[c.id] || []).includes(id) });
+        cb.addEventListener('change', () => {
+          const set = new Set(channelFeeds()[c.id] || []);
+          if (cb.checked) set.add(id); else set.delete(id);
+          if (set.size) channelFeeds()[c.id] = [...set]; else delete channelFeeds()[c.id];
+          savePrefs();
+          schedule();
+        });
+        return el('label', { className: 'ysf-fe-row' }, [cb, el('img', { src: c.thumb, alt: '' }), el('span', { textContent: c.title })]);
+      }));
+      if (!subsItems.length) list.replaceChildren(el('div', { className: 'ysf-fe-empty', textContent: L.noSubsYet }));
+    };
+    search.addEventListener('input', renderList);
+    renderList();
+
+    const del = el('button', { className: 'ysf-fe-del', type: 'button', textContent: L.deleteFeed });
+    del.addEventListener('click', () => {
+      if (!del.classList.contains('ysf-armed')) { del.classList.add('ysf-armed'); del.textContent = L.deleteSure; return; }
+      prefs.feedDefs = feedDefs().filter((f) => f.id !== id);
+      for (const ch of Object.keys(channelFeeds())) {
+        const rest = channelFeeds()[ch].filter((x) => x !== id);
+        if (rest.length) channelFeeds()[ch] = rest; else delete channelFeeds()[ch];
+      }
+      savePrefs();
+      closeFeedEditor();
+      setActiveFeed(null);
+    });
+    const done = el('button', { className: 'ysf-sp-btn ysf-fe-done', type: 'button', textContent: L.done });
+    done.addEventListener('click', closeFeedEditor);
+    const closeX = el('button', { className: 'ysf-fe-x', type: 'button', title: L.close }, [svgIcon(PATH.close)]);
+    closeX.addEventListener('click', closeFeedEditor);
+
+    const panel = el('div', { className: 'ysf-fe' }, [
+      el('div', { className: 'ysf-fe-head' }, [el('span', { textContent: L.editFeed }), closeX]),
+      name, search, list,
+      el('div', { className: 'ysf-fe-foot' }, [del, done]),
+    ]);
+    feedEditor = el('div', { className: 'ysf-fe-wrap' }, [panel]);
+    feedEditor.addEventListener('mousedown', (e) => { if (e.target === feedEditor) closeFeedEditor(); });
+    document.body.append(feedEditor);
+    if (def.name.startsWith(L.newFeed)) { name.focus(); name.select(); } else search.focus();
+  }
+
+  // ---------- Секція «Стрічки» в сайдбарі ----------
+  const feedsCfg = {
+    title: L.feeds,
+    href: SUBS_URL,
+    onHeader: () => { setActiveFeed(null); goSubs(); },
+    collapseAfter: 0,
+    get items() { return feedDefs().map((f) => ({ id: f.id, title: f.name, count: channelsOf(f.id).length })); },
+    url: () => SUBS_URL,
+    // Клік по пункту: запамʼятовуємо стрічку й відкриваємо сторінку підписок
+    endpoint: (it) => { setActiveFeed(it.id); return browseEndpoint(SUBS_URL, 'FEsubscriptions'); },
+    isActive: (it) => location.pathname === SUBS_URL && activeFeed === it.id,
+    label: (it) => splitEmoji(it.title).name,
+    buildIcon: (it) => {
+      const { emoji } = splitEmoji(it.title);
+      if (emoji) return el('span', { className: 'ysf-icon ysf-emoji', textContent: emoji });
+      return el('span', { className: 'ysf-icon ysf-icon-muted' }, [svgIcon(PATH.feed)]);
+    },
+    extra: (it) => (it.count ? el('span', { className: 'ysf-count', textContent: String(it.count) }) : null),
+  };
+  function ensureFeedsSection(beforeEl) {
+    let section = document.getElementById('ysf-feeds-section');
+    if (!section) {
+      section = buildSection('feeds', feedsCfg);
+      const add = el('a', { className: 'ysf-entry ysf-feed-add', href: '#' }, [
+        el('span', { className: 'ysf-icon ysf-icon-muted' }, [svgIcon(PATH.plus)]),
+        el('span', { className: 'ysf-title', textContent: L.newFeed }),
+      ]);
+      add.addEventListener('click', (e) => { e.preventDefault(); newFeed(); });
+      section.append(add);
+    }
+    if (section.nextElementSibling !== beforeEl) beforeEl.before(section);
+    renderSection(section, 'feeds', feedsCfg);
+  }
+  cleanups.push(() => document.getElementById('ysf-feeds-section')?.remove());
+
   // ---------- Нові меню "⋮" (yt-sheet-view-model) у видачі, рекомендаціях, підписках ----------
   // Пункти там без даних у DOM, тож запамʼятовуємо, яке меню відкрили: беремо його вміст
   // з кнопки (button-view-model.data) і знаходимо назву пункту "Зберегти в списку".
@@ -1396,6 +1709,7 @@
     if (document.documentElement.dataset.ysfPage !== page) document.documentElement.dataset.ysfPage = page;
     markMenuItems();
     applyBoard();
+    applyFeeds();
 
     document.querySelectorAll('ytd-topbar-logo-renderer a, a#logo').forEach((a) => {
       if (a.getAttribute('href') !== SUBS_URL) a.setAttribute('href', SUBS_URL);
@@ -1417,7 +1731,7 @@
       let entry = document.getElementById('ysf-subs-entry');
       if (!entry) entry = buildSubsEntry();
       if (entry.nextElementSibling !== homeEntry) homeEntry.before(entry);
-      setActive(entry, location.pathname === SUBS_URL);
+      setActive(entry, location.pathname === SUBS_URL && !activeFeed);
     }
 
     // Підписки: власна секція замість нативної (порядок, приховування)
@@ -1431,6 +1745,7 @@
       if (nativeSubs.nextElementSibling !== section) nativeSubs.after(section);
       renderSection(section, 'subs', subsCfg);
       section.querySelector('.ysf-section-link').classList.toggle('ysf-active', location.pathname === CHANNELS_URL);
+      ensureFeedsSection(section);
     }
 
     // Списки відтворення — перед блоком "Ви" (Історія, Сподобалися), "Ви" — в самому низу

@@ -37,6 +37,16 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
   `ACTION_SET_PLAYLIST_NAME`); «Видалити список» — у два кліки (`api.deletePlaylist` = `playlist/delete`).
   Обидва оптимістичні з відкатом і тостом. Перевірено в живій вкладці з підміненими запитами (форма запитів,
   UI, порядок); реальні rename/delete на сервері YouTube ще не проганялись.
+- **Стрічки (власні стрічки з груп каналів):** секція «Стрічки» в сайдбарі над «Підписками» (той самий
+  `buildSection`, ключ `feeds`: порядок/✎/око + «+ Нова стрічка») і чипи `#ysf-feedbar` на `/feed/subscriptions`
+  («Усі підписки» · стрічки · «+ Нова стрічка» · ↻ · ✎). Вибрана стрічка (`activeFeed`, sessionStorage
+  `ysf-active-feed`) → `<html ysf-feed-on>`, рідна сітка схована, наша `#ysf-feed` (`.ysf-fgrid`, картки
+  `.ysf-fcard` з кнопкою «Зберегти в…» = `openSavePanel`). Відео — **RSS кожного каналу**
+  `/feeds/videos.xml?channel_id=UC…` (той самий origin, без входу; ~15 останніх на канал; парсинг регулярками —
+  DOMParser під Trusted Types не можна), Shorts (`<link …/shorts/…>`) відкидаються, сортування за `published`,
+  до 150 шт., 6 запитів паралельно, кеш у памʼяті 30 хв. Вікно `openFeedEditor`: назва (емодзі на початку =
+  іконка), пошук, галочки каналів (з `subsItems`), «Видалити стрічку» у два кліки. «Підписки»/логотип скидають
+  стрічку. `ytd-browse` — flex-колонка з `align-items: center` → `#ysf-feedbar/#ysf-feed` мають `width: 100%`.
 - **Синхронізація:** зміни плейлистів ловляться через перехоплення `fetch`/XHR (`early.js`)
   і `PerformanceObserver` (`content.js`) → перечитування `/feed/playlists`.
 - **Локалізація:** uk / en / ru. Контент-скрипт — за `<html lang>` YouTube (fallback en);
@@ -68,7 +78,7 @@ Chrome-розширення (Manifest V3), яке перебудовує інт�
 ### Карта `content.js`
 1. Dispose попереднього екземпляра (`window.__ysfDispose`) — скрипт можна безпечно виконати повторно.
 2. Константи, словники `UK`/`EN`/`ru` (`L`), `fmtNum`, `quote`.
-3. `prefs` у `localStorage['ysf-prefs-v1']`: `{ subs:{order,hidden,expanded}, playlists:{order,hidden,expanded}, boardOff }`.
+3. `prefs` у `localStorage['ysf-prefs-v1']`: `{ subs:{order,hidden,expanded}, playlists:{…}, feeds:{…}, feedDefs:[{id,name}], channelFeeds:{UC…:[feedId]}, boardOff }`.
    Кеш плейлистів — `localStorage['ysf-playlists-v2']`.
    `savePrefs()` також шле `postMessage({ysf:'prefs-saved'})` → `sync-bridge.js` пише в `chrome.storage.sync`;
    на `{ysf:'prefs-updated'}` (зміни з іншого комп'ютера) — `loadPrefs()` + `schedule()`. При відкритті сторінки синхронізована копія перемагає.
