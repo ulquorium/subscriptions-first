@@ -1169,3 +1169,14 @@ html[ysf-feed-on] ytd-browse:has(> #ysf-feed) > :not(#ysf-feedbar):not(#ysf-feed
 .ysf-fe-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .ysf-fe-del { padding: 8px 4px; border: 0; background: none; color: #e53935; font: 500 1.4rem "Roboto", "Arial", sans-serif; cursor: pointer; }
 .ysf-fe-del.ysf-armed { padding: 8px 12px; border-radius: 18px; background: #e53935; color: #fff; }
+.ysf-fthumb { position: relative; }
+.ysf-fdur {
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font: 500 1.2rem/1.8rem "Roboto", "Arial", sans-serif;
+}

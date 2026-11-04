@@ -1,9 +1,9 @@
 {
-  "version": "1.14.0",
-  "url": "https://github.com/ulquorium/subscriptions-first/releases/tag/v1.14.0",
+  "version": "1.14.1",
+  "url": "https://github.com/ulquorium/subscriptions-first/releases/tag/v1.14.1",
   "notes": {
-    "en": "• Custom feeds: group channels (“Design”, “Learning”…) and watch videos from just those. A “Feeds” section in the sidebar and chips on the subscriptions page; no Shorts.",
-    "uk": "• Власні стрічки: збери канали в групи («Дизайн», «Навчання»…) і дивись відео лише з них. Секція «Стрічки» в сайдбарі й чипи на сторінці підписок; Shorts не потрапляють.",
-    "ru": "• Свои ленты: собери каналы в группы («Дизайн», «Обучение»…) и смотри видео только из них. Раздел «Ленты» в сайдбаре и чипы на странице подписок; без Shorts."
+    "en": "• Feeds work: videos now come from your YouTube subscriptions feed (YouTube's channel feeds stopped responding), with “Show more” at the bottom. Duration on thumbnails.\n• The “Feeds” sidebar section no longer flickers.",
+    "uk": "• Стрічки працюють: відео беруться зі стрічки підписок YouTube (стрічки каналів YouTube перестали відповідати), знизу — «Показати ще». Тривалість на прев'ю.\n• Секція «Стрічки» в сайдбарі більше не мигає.",
+    "ru": "• Ленты работают: видео берутся из ленты подписок YouTube (ленты каналов YouTube перестали отвечать), внизу — «Показать ещё». Длительность на превью.\n• Раздел «Ленты» в сайдбаре больше не мигает."
   }
 }
